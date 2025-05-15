@@ -11,5 +11,10 @@ namespace AURA_Frontend
         {
             reposTable1.AddItem(new StateDotItem { Name = "Hello", Status = "Error" });
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

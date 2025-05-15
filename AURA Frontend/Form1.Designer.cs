@@ -45,7 +45,6 @@
             // 
             // button1
             // 
-            button1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             button1.Location = new Point(331, 338);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
@@ -63,6 +62,7 @@
             Controls.Add(reposTable1);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
         }
 
