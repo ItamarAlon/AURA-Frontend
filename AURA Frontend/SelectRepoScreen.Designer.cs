@@ -32,7 +32,6 @@
             reposTable1 = new ReposTable();
             button1 = new Button();
             panel1 = new Panel();
-            button2 = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -70,21 +69,10 @@
             panel1.Size = new Size(434, 709);
             panel1.TabIndex = 6;
             // 
-            // button2
-            // 
-            button2.Location = new Point(10, 7);
-            button2.Name = "button2";
-            button2.Size = new Size(150, 46);
-            button2.TabIndex = 7;
-            button2.Text = "Go Back";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += this.button2_Click;
-            // 
             // SelectRepoScreen
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(button2);
             Controls.Add(panel1);
             Name = "SelectRepoScreen";
             Size = new Size(1393, 960);
@@ -97,6 +85,5 @@
         private ReposTable reposTable1;
         private Button button1;
         private Panel panel1;
-        private Button button2;
     }
 }

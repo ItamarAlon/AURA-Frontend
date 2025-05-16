@@ -14,6 +14,8 @@ namespace AURA_Frontend
 {
     public partial class ReposTable : UserControl
     {
+        public event Action<Repository> RepoSelected;
+
         public ReposTable()
         {
             InitializeComponent();
@@ -40,7 +42,6 @@ namespace AURA_Frontend
                 dataGridView1.InvalidateRow(index);
             }
         }
-
 
         public bool HasVerticalScrollBar()
         {
@@ -91,7 +92,8 @@ namespace AURA_Frontend
             Repository clickedOnRepo = getClickedOnRepo(e as MouseEventArgs);
             if (clickedOnRepo != null)
             {
-                MessageBox.Show($"Repo {clickedOnRepo.Name} was double-clicked, with status {clickedOnRepo.Status}.");
+                //MessageBox.Show($"Repo {clickedOnRepo.Name} was double-clicked, with status {clickedOnRepo.Status}.");
+                RepoSelected?.Invoke(clickedOnRepo);
             }
         }
 

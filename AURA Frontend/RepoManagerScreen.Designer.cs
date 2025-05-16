@@ -31,12 +31,13 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
+            goBackButton = new Button();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(0, 0);
+            label1.Location = new Point(666, 466);
             label1.Name = "label1";
             label1.Size = new Size(78, 32);
             label1.TabIndex = 0;
@@ -54,17 +55,28 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(298, 125);
+            label3.Location = new Point(833, 272);
             label3.Name = "label3";
             label3.Size = new Size(78, 32);
             label3.TabIndex = 2;
             label3.Text = "label3";
+            // 
+            // goBackButton
+            // 
+            goBackButton.Location = new Point(3, 3);
+            goBackButton.Name = "goBackButton";
+            goBackButton.Size = new Size(150, 46);
+            goBackButton.TabIndex = 3;
+            goBackButton.Text = "Go Back";
+            goBackButton.UseVisualStyleBackColor = true;
+            goBackButton.Click += goBackButton_Click;
             // 
             // RepoManagerScreen
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
+            Controls.Add(goBackButton);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -79,5 +91,6 @@
         private Label label1;
         private Label label2;
         private Label label3;
+        private Button goBackButton;
     }
 }

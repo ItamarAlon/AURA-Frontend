@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace AURA_Frontend
 {
-    public partial class RepoManagerScreen : UserControl
+    public partial class RepoManagerScreen : UserControl, IHasGoBackOption
     {
+        public event Action GoToMainScreenRequested;
+
         public RepoManagerScreen()
         {
             InitializeComponent();
+        }
+
+        private void goBackButton_Click(object sender, EventArgs e)
+        {
+            GoToMainScreenRequested?.Invoke();
         }
     }
 }
