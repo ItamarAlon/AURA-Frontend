@@ -1,5 +1,9 @@
+using System.Windows.Forms;
+
 namespace AURA_Frontend
 {
+    using Screen = UserControl;
+
     public partial class Form1 : Form
     {
         public Form1()
@@ -7,13 +11,16 @@ namespace AURA_Frontend
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void switchScreen(Screen newScreen)
         {
+            panel1.Controls.Clear();
+            newScreen.Dock = DockStyle.Fill;
+            panel1.Controls.Add(newScreen);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void switchBackToMainScreen()
         {
-
+            switchScreen(mainScreen);
         }
     }
 }

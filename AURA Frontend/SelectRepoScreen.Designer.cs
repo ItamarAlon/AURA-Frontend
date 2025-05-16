@@ -1,6 +1,6 @@
 ﻿namespace AURA_Frontend
 {
-    partial class SelectRepoControl
+    partial class SelectRepoScreen
     {
         /// <summary> 
         /// Required designer variable.
@@ -32,6 +32,7 @@
             reposTable1 = new ReposTable();
             button1 = new Button();
             panel1 = new Panel();
+            button2 = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -64,16 +65,28 @@
             panel1.Controls.Add(reposTable1);
             panel1.Controls.Add(button1);
             panel1.Location = new Point(444, 118);
+            panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
             panel1.Size = new Size(434, 709);
             panel1.TabIndex = 6;
             // 
-            // SelectRepoControl
+            // button2
+            // 
+            button2.Location = new Point(10, 7);
+            button2.Name = "button2";
+            button2.Size = new Size(150, 46);
+            button2.TabIndex = 7;
+            button2.Text = "Go Back";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += this.button2_Click;
+            // 
+            // SelectRepoScreen
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(button2);
             Controls.Add(panel1);
-            Name = "SelectRepoControl";
+            Name = "SelectRepoScreen";
             Size = new Size(1393, 960);
             panel1.ResumeLayout(false);
             ResumeLayout(false);
@@ -84,5 +97,6 @@
         private ReposTable reposTable1;
         private Button button1;
         private Panel panel1;
+        private Button button2;
     }
 }

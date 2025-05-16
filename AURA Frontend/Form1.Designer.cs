@@ -30,26 +30,26 @@
         {
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             panel1 = new Panel();
-            selectRepoControl1 = new SelectRepoControl();
+            mainScreen = new SelectRepoScreen();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Controls.Add(selectRepoControl1);
+            panel1.Controls.Add(mainScreen);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(1393, 960);
             panel1.TabIndex = 0;
             // 
-            // selectRepoControl1
+            // mainScreen
             // 
-            selectRepoControl1.Dock = DockStyle.Fill;
-            selectRepoControl1.Location = new Point(0, 0);
-            selectRepoControl1.Name = "selectRepoControl1";
-            selectRepoControl1.Size = new Size(1393, 960);
-            selectRepoControl1.TabIndex = 0;
+            mainScreen.Dock = DockStyle.Fill;
+            mainScreen.Location = new Point(0, 0);
+            mainScreen.Name = "mainScreen";
+            mainScreen.Size = new Size(1393, 960);
+            mainScreen.TabIndex = 0;
             // 
             // Form1
             // 
@@ -60,7 +60,6 @@
             Margin = new Padding(6);
             Name = "Form1";
             Text = "Form1";
-            Load += Form1_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -68,6 +67,6 @@
         #endregion
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Panel panel1;
-        private SelectRepoControl selectRepoControl1;
+        private SelectRepoScreen mainScreen;
     }
 }
