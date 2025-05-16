@@ -29,46 +29,45 @@
         private void InitializeComponent()
         {
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            reposTable1 = new ReposTable();
-            button1 = new Button();
+            panel1 = new Panel();
+            selectRepoControl1 = new SelectRepoControl();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // reposTable1
+            // panel1
             // 
-            reposTable1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            reposTable1.Location = new Point(253, 104);
-            reposTable1.MaximumSize = new Size(250, 0);
-            reposTable1.MinimumSize = new Size(0, 202);
-            reposTable1.Name = "reposTable1";
-            reposTable1.Size = new Size(233, 202);
-            reposTable1.TabIndex = 2;
+            panel1.Controls.Add(selectRepoControl1);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1393, 960);
+            panel1.TabIndex = 0;
             // 
-            // button1
+            // selectRepoControl1
             // 
-            button1.Location = new Point(331, 338);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 3;
-            button1.Text = "Add Repo";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            selectRepoControl1.Dock = DockStyle.Fill;
+            selectRepoControl1.Location = new Point(0, 0);
+            selectRepoControl1.Name = "selectRepoControl1";
+            selectRepoControl1.Size = new Size(1393, 960);
+            selectRepoControl1.TabIndex = 0;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(750, 450);
-            Controls.Add(button1);
-            Controls.Add(reposTable1);
+            ClientSize = new Size(1393, 960);
+            Controls.Add(panel1);
+            Margin = new Padding(6);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private ReposTable reposTable1;
-        private Button button1;
+        private Panel panel1;
+        private SelectRepoControl selectRepoControl1;
     }
 }

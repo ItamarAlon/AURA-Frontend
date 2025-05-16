@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static AURA_Frontend.Repository;
 
 namespace AURA_Frontend
 {
@@ -20,39 +22,44 @@ namespace AURA_Frontend
             dataGridView1.RowTemplate.Height = 30;
         }
 
-        public void AddItem(StateDotItem item)
+        public Repository this[int index]
         {
-            stateDotItemBindingSource.Add(item);
-            dataGridView1.Height += dataGridView1.Rows.GetRowsHeight(DataGridViewElementStates.Visible)
-                       + dataGridView1.ColumnHeadersHeight;
+            get => repositoryBindingSource?[index] as Repository;
         }
 
-        public void UpdateItemStatus(int index, string newStatus)
+        public void AddItem(Repository item)
         {
-            if (index >= 0 && index < stateDotItemBindingSource.Count)
+            repositoryBindingSource.Add(item);
+        }
+
+        public void UpdateItemStatus(int index, eStatus newStatus)
+        {
+            if (index >= 0 && index < repositoryBindingSource.Count)
             {
-                (stateDotItemBindingSource[index] as StateDotItem).Status = newStatus;
+                this[index].Status = newStatus;
                 dataGridView1.InvalidateRow(index);
             }
         }
 
+
+        public bool HasVerticalScrollBar()
+        {
+            return dataGridView1.DisplayedRowCount(true) < dataGridView1.RowCount;
+        }
+
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < stateDotItemBindingSource.Count && e.ColumnIndex == dataGridView1.Columns["State"].Index)
+            drawDot(e);
+        }
+
+        private void drawDot(DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < repositoryBindingSource.Count && e.ColumnIndex == dataGridView1.Columns["State"].Index)
             {
                 e.PaintBackground(e.ClipBounds, true);
                 e.Handled = true;
 
-                string status = (stateDotItemBindingSource[e.RowIndex] as StateDotItem).Status;
-                Color dotColor = Color.Gray;
-
-                switch (status)
-                {
-                    case "Done": dotColor = Color.Green; break;
-                    case "Error": dotColor = Color.Red; break;
-                    case "Warning": dotColor = Color.Orange; break;
-                }
-
+                Color dotColor = getDotColorFromRepo(this[e.RowIndex]);
                 int diameter = 14;
                 int x = e.CellBounds.Left + (e.CellBounds.Width - diameter) / 2;
                 int y = e.CellBounds.Top + (e.CellBounds.Height - diameter) / 2;
@@ -65,21 +72,52 @@ namespace AURA_Frontend
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private Color getDotColorFromRepo(Repository repo)
         {
+            Color dotColor = Color.Gray;
 
+            switch (repo.Status)
+            {
+                case eStatus.Done: dotColor = Color.Green; break;
+                case eStatus.Error: dotColor = Color.Red; break;
+                case eStatus.Warning: dotColor = Color.Orange; break;
+            }
+
+            return dotColor;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
         {
-
+            Repository clickedOnRepo = getClickedOnRepo(e as MouseEventArgs);
+            if (clickedOnRepo != null)
+            {
+                MessageBox.Show($"Repo {clickedOnRepo.Name} was double-clicked, with status {clickedOnRepo.Status}.");
+            }
         }
 
-    }
+        private Repository getClickedOnRepo(MouseEventArgs e)
+        {
+            if (e == null)
+                return null;
 
-    public class StateDotItem
-    {
-        public string Name { get; set; }
-        public string Status { get; set; } // "Done", "Error", etc.
+            DataGridViewRow clickedRow = GetClickedRow(e);
+
+            if (clickedRow != null)
+                return clickedRow.DataBoundItem as Repository;           
+            else
+                return null;
+        }
+
+        private DataGridViewRow GetClickedRow(MouseEventArgs e)
+        {
+            DataGridView.HitTestInfo hit = dataGridView1.HitTest(e.X, e.Y);
+
+            if (hit.RowIndex >= 0)
+            {
+                return dataGridView1.Rows[hit.RowIndex];
+            }
+
+            return null;
+        }
     }
 }
