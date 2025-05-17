@@ -17,14 +17,14 @@ namespace AURA_Frontend
         public SelectRepoScreen()
         {
             InitializeComponent();
-            reposTable1.RepoSelected += (repo) => this.RepoSelected?.Invoke(repo);
+            reposTable.RepoSelected += (repo) => this.RepoSelected?.Invoke(repo);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            reposTable1.AddItem(new Repository { Name = "Hello", Status = Repository.eStatus.Error });
-            reposTable1.AddItem(new Repository { Name = "World", Status = Repository.eStatus.Done });
-            reposTable1.AddItem(new Repository { Name = "How", Status = Repository.eStatus.Warning });
+            reposTable.AddItem(new Repository { Name = "Hello", Status = Repository.eStatus.Error });
+            reposTable.AddItem(new Repository { Name = "World", Status = Repository.eStatus.Done });
+            reposTable.AddItem(new Repository { Name = "How", Status = Repository.eStatus.Warning });
         }
     }
 }

@@ -14,7 +14,7 @@ namespace AURA_Frontend
 
         private void reposTable1_RepoChosen(Repository repoChosen)
         {
-            Screen repoScreen = new RepoManagerScreen(); //TODO: pass repoChosen to the repo manager screen
+            Screen repoScreen = new RepoManagerScreen() { Repo = repoChosen};
             switchScreen(repoScreen);
         }
 

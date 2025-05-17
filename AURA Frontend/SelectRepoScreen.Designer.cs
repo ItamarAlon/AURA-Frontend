@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            reposTable1 = new ReposTable();
+            reposTable = new ReposTable();
             button1 = new Button();
             panel1 = new Panel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // reposTable1
+            // reposTable
             // 
-            reposTable1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            reposTable1.Location = new Point(0, 0);
-            reposTable1.Margin = new Padding(11, 13, 11, 13);
-            reposTable1.MaximumSize = new Size(464, 0);
-            reposTable1.MinimumSize = new Size(0, 431);
-            reposTable1.Name = "reposTable1";
-            reposTable1.Size = new Size(433, 543);
-            reposTable1.TabIndex = 4;
+            reposTable.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            reposTable.Location = new Point(0, 0);
+            reposTable.Margin = new Padding(11, 13, 11, 13);
+            reposTable.MaximumSize = new Size(464, 0);
+            reposTable.MinimumSize = new Size(0, 431);
+            reposTable.Name = "reposTable";
+            reposTable.Size = new Size(433, 543);
+            reposTable.TabIndex = 4;
             // 
             // button1
             // 
@@ -61,7 +61,7 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-            panel1.Controls.Add(reposTable1);
+            panel1.Controls.Add(reposTable);
             panel1.Controls.Add(button1);
             panel1.Location = new Point(444, 118);
             panel1.Margin = new Padding(0);
@@ -82,7 +82,7 @@
 
         #endregion
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private ReposTable reposTable1;
+        private ReposTable reposTable;
         private Button button1;
         private Panel panel1;
     }
