@@ -14,7 +14,7 @@ namespace AURA_Frontend
 
         private void reposTable1_RepoChosen(Repository repoChosen)
         {
-            Screen repoScreen = new RepoManagerScreen() { Repo = repoChosen};
+            Screen repoScreen = RepoManagerScreenFactory.CreateScreen(repoChosen);
             switchScreen(repoScreen);
         }
 
