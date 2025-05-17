@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace AURA_Frontend
 {
-    internal interface IHasGoBackOption
+    public class EventArgs<T> : EventArgs
     {
-        public event EventHandler GoToMainScreenRequested;
+        public T Value { get; }
+
+        public EventArgs(T value)
+        {
+            Value = value;
+        }
     }
 }

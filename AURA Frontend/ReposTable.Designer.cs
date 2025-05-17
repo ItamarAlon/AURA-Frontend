@@ -69,6 +69,7 @@
             dataGridView1.TabIndex = 2;
             dataGridView1.CellPainting += dataGridView1_CellPainting;
             dataGridView1.DoubleClick += dataGridView1_DoubleClick;
+            dataGridView1.KeyPress += dataGridView_KeyPress;
             // 
             // State
             // 

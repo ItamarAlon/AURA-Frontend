@@ -12,12 +12,6 @@ namespace AURA_Frontend
         private readonly Dictionary<TKey, WeakReference<TValue>> r_Dictionary = new();
         private readonly ConditionalWeakTable<TValue, ScreenFinalizer> r_TrackerTable = new();
 
-        public void AddOrUpdate(TKey key, TValue value)
-        {
-            r_Dictionary[key] = new WeakReference<TValue>(value);
-            r_TrackerTable.Add(value, new ScreenFinalizer(() => Remove(key)));
-        }
-
         public TValue this[TKey key]
         {
             get
@@ -25,7 +19,13 @@ namespace AURA_Frontend
                 TryGetValue(key, out TValue value);
                 return value;
             }
-            set => AddOrUpdate(key, value);
+            set => addOrUpdate(key, value);
+        }
+
+        private void addOrUpdate(TKey key, TValue value)
+        {
+            r_Dictionary[key] = new WeakReference<TValue>(value);
+            r_TrackerTable.Add(value, new ScreenFinalizer(() => Remove(key)));
         }
 
         public bool TryGetValue(TKey key, out TValue value)

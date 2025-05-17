@@ -9,12 +9,13 @@ namespace AURA_Frontend
         public Form1()
         {
             InitializeComponent();
-            mainScreen.RepoSelected += reposTable1_RepoChosen;
+            mainScreen.RepoSelected += reposTable_RepoSelected;
         }
 
-        private void reposTable1_RepoChosen(Repository repoChosen)
+        private void reposTable_RepoSelected(object sender, EventArgs<Repository> e)
         {
-            Screen repoScreen = RepoManagerScreenFactory.CreateScreen(repoChosen);
+            Repository chosenRepo = e.Value;
+            Screen repoScreen = RepoManagerScreenFactory.CreateScreen(chosenRepo);
             switchScreen(repoScreen);
         }
 
@@ -24,12 +25,12 @@ namespace AURA_Frontend
             newScreen.Dock = DockStyle.Fill;
 
             if (newScreen is IHasGoBackOption canGoBackScreen)
-                canGoBackScreen.GoToMainScreenRequested += goBackButton_GoToMainScreenRequested;
+                canGoBackScreen.GoToMainScreenRequested += canGoBackScreen_GoToMainScreenRequested;
 
             panel1.Controls.Add(newScreen);
         }
 
-        private void goBackButton_GoToMainScreenRequested()
+        private void canGoBackScreen_GoToMainScreenRequested(object sender, EventArgs e)
         {
             switchBackToMainScreen();
         }

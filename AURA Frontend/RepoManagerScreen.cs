@@ -12,7 +12,7 @@ namespace AURA_Frontend
 {
     public partial class RepoManagerScreen : UserControl, IHasGoBackOption
     {
-        public event Action GoToMainScreenRequested;
+        public event EventHandler GoToMainScreenRequested;
 
         public Repository Repo { get; set; }
 
@@ -21,14 +21,19 @@ namespace AURA_Frontend
             InitializeComponent();
         }
 
-        protected virtual void OnGoToMainScreenRequested()
+        protected virtual void OnGoToMainScreenRequested(EventArgs e)
         {
-            GoToMainScreenRequested?.Invoke();
+            GoToMainScreenRequested?.Invoke(this, e);
         }
 
         private void goBackButton_Click(object sender, EventArgs e)
         {
-            OnGoToMainScreenRequested();
+            OnGoToMainScreenRequested(e);
+        }
+
+        ~RepoManagerScreen()
+        {
+            MessageBox.Show("Screen Removed");
         }
     }
 }

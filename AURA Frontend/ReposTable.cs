@@ -14,7 +14,7 @@ namespace AURA_Frontend
 {
     public partial class ReposTable : UserControl
     {
-        public event Action<Repository> RepoSelected;
+        public event EventHandler<EventArgs<Repository>> RepoSelected;
 
         public ReposTable()
         {
@@ -89,29 +89,44 @@ namespace AURA_Frontend
 
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
         {
+            openSelectedRepoManagerScreen(e);
+        }
+
+        private void openSelectedRepoManagerScreen(EventArgs e = null)
+        {
             Repository clickedOnRepo = getClickedOnRepo(e as MouseEventArgs);
+
             if (clickedOnRepo != null)
             {
-                //MessageBox.Show($"Repo {clickedOnRepo.Name} was double-clicked, with status {clickedOnRepo.Status}.");
-                RepoSelected?.Invoke(clickedOnRepo);
+                NotifyThatRepoWasSelected(clickedOnRepo);
             }
+        }
+
+        private void NotifyThatRepoWasSelected(Repository clickedOnRepo)
+        {
+            OnRepoSelected(new EventArgs<Repository>(clickedOnRepo));
+        }
+
+        protected virtual void OnRepoSelected(EventArgs<Repository> e)
+        {
+            RepoSelected?.Invoke(this, e);
         }
 
         private Repository getClickedOnRepo(MouseEventArgs e)
         {
-            if (e == null)
-                return null;
-
             DataGridViewRow clickedRow = GetClickedRow(e);
 
             if (clickedRow != null)
-                return clickedRow.DataBoundItem as Repository;           
+                return clickedRow.DataBoundItem as Repository;
             else
                 return null;
         }
 
         private DataGridViewRow GetClickedRow(MouseEventArgs e)
         {
+            if (e == null)
+                return dataGridView1.CurrentRow;
+
             DataGridView.HitTestInfo hit = dataGridView1.HitTest(e.X, e.Y);
 
             if (hit.RowIndex >= 0)
@@ -120,6 +135,12 @@ namespace AURA_Frontend
             }
 
             return null;
+        }
+
+        private void dataGridView_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+                openSelectedRepoManagerScreen();
         }
     }
 }
