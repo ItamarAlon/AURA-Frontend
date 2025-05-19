@@ -28,38 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
             goBackButton = new Button();
+            chatbox1 = new Chatbox();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(666, 466);
-            label1.Name = "label1";
-            label1.Size = new Size(78, 32);
-            label1.TabIndex = 0;
-            label1.Text = "label1";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(601, 256);
-            label2.Name = "label2";
-            label2.Size = new Size(78, 32);
-            label2.TabIndex = 1;
-            label2.Text = "label2";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(833, 272);
-            label3.Name = "label3";
-            label3.Size = new Size(78, 32);
-            label3.TabIndex = 2;
-            label3.Text = "label3";
             // 
             // goBackButton
             // 
@@ -71,26 +42,29 @@
             goBackButton.UseVisualStyleBackColor = true;
             goBackButton.Click += goBackButton_Click;
             // 
+            // chatbox1
+            // 
+            chatbox1.BackColor = Color.White;
+            chatbox1.Location = new Point(284, 21);
+            chatbox1.Margin = new Padding(7, 6, 7, 6);
+            chatbox1.Name = "chatbox1";
+            chatbox1.Size = new Size(727, 672);
+            chatbox1.TabIndex = 4;
+            // 
             // RepoManagerScreen
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
+            Controls.Add(chatbox1);
             Controls.Add(goBackButton);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
             Name = "RepoManagerScreen";
-            Size = new Size(1393, 960);
+            Size = new Size(3045, 1332);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
-        private Label label2;
-        private Label label3;
         private Button goBackButton;
+        private Chatbox chatbox1;
     }
 }
