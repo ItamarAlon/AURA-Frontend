@@ -2,7 +2,8 @@
 {
     public class ChatboxInfo
     {
-        public string User { get; set; }
+        public string Sender { get; set; }
+        public string Receiver { get; set; }
         public string NamePlaceholder { get; set; }
         public string PhonePlaceholder { get; set; }
         public string StatusPlaceholder { get; set; }

@@ -17,13 +17,16 @@ namespace AURA_Frontend
         public OpenFileDialog fileDialog = new OpenFileDialog();
         public string initialdirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
+        private const bool v_IsReceiver = true;
+
         public Chatbox()
         {
             InitializeComponent();
 
             chatbox_info = new ChatboxInfo()
             {
-                User = "User",
+                Sender = "User",
+                Receiver = "LLM",
                 NamePlaceholder = "The User",
                 PhonePlaceholder = "05242",
                 StatusPlaceholder = "On"
@@ -34,15 +37,15 @@ namespace AURA_Frontend
             phoneLabel.Text = chatbox_info.PhonePlaceholder;
             chatTextbox.Text = chatbox_info.ChatPlaceholder;
 
-            chatTextbox.Enter += ChatEnter;
-            chatTextbox.Leave += ChatLeave;
+            chatTextbox.Enter += chatTextBox_Enter;
+            chatTextbox.Leave += chatTextBox_Leave;
             sendButton.Click += sendButton_Click;
-            attachButton.Click += BuildAttachment;
-            removeButton.Click += CancelAttachment;
+            attachButton.Click += attachButton_Click;
+            removeButton.Click += removeButton_Click;
+            chatTextbox.KeyDown += chatTextbox_KeyDown;
 
-            chatTextbox.KeyDown += OnEnter;
-
-            AddMessage(null);
+            SendMessage("Hello There");
+            ReceiveMessage("General Kenobi");
         }
         public Chatbox(ChatboxInfo _chatbox_info)
         {
@@ -55,13 +58,13 @@ namespace AURA_Frontend
             phoneLabel.Text = chatbox_info.PhonePlaceholder;
             chatTextbox.Text = chatbox_info.ChatPlaceholder;
 
-            chatTextbox.Enter += ChatEnter;
-            chatTextbox.Leave += ChatLeave;
+            chatTextbox.Enter += chatTextBox_Enter;
+            chatTextbox.Leave += chatTextBox_Leave;
             sendButton.Click += sendButton_Click;
-            attachButton.Click += BuildAttachment;
-            removeButton.Click += CancelAttachment;
+            attachButton.Click += attachButton_Click;
+            removeButton.Click += removeButton_Click;
 
-            chatTextbox.KeyDown += OnEnter;
+            chatTextbox.KeyDown += chatTextbox_KeyDown;
 
             AddMessage(null);
         }
@@ -85,7 +88,7 @@ namespace AURA_Frontend
         }
 
         //Improves the chat UI slightly by having a placeholder text. Note that this is implemented because Winforms doesn't have a native "placeholder" UI. Can be buggy.
-        void ChatLeave(object sender, EventArgs e)
+        void chatTextBox_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(chatTextbox.Text))
             {
@@ -95,7 +98,7 @@ namespace AURA_Frontend
         }
 
         //Improves the chat UI slightly by having a placeholder text. Note that this is implemented because Winforms doesn't have a native "placeholder" UI. Can be buggy.
-        void ChatEnter(object sender, EventArgs e)
+        void chatTextBox_Enter(object sender, EventArgs e)
         {
             chatTextbox.ForeColor = Color.Black;
             if (chatTextbox.Text == chatbox_info.ChatPlaceholder)
@@ -107,14 +110,30 @@ namespace AURA_Frontend
         //Cross-tested this with the Twilio API and the RingCentral API, and async messaging is the way to go.
         async void sendButton_Click(object sender, EventArgs e)
         {
+            sendUserTypedMessage();
+        }
+
+        private void sendUserTypedMessage()
+        {
             string chatMessage = chatTextbox.Text;
             SendMessage(chatMessage);
         }
 
-        public async void SendMessage(string chatMessage)
+        public async void SendMessage(string message)
+        {
+            parseMessage(message, !v_IsReceiver);
+        }
+
+        public async void ReceiveMessage(string message)
+        {
+            parseMessage(message, v_IsReceiver);
+        }
+
+        private void parseMessage(string message, bool isReceiver = !v_IsReceiver)
         {
             IChatModel chatModel = null;
             TextChatModel textModel = null;
+            string author = isReceiver ? chatbox_info.Receiver : chatbox_info.Sender;
 
             //Each IChatModel is specifically built for a single purpose. For that reason, if you want to display a text item AND and image, you'd make two IChatModels for
             //their respective purposes. AttachmentChatModel and ImageChatModel, however, can really be used interchangeably.
@@ -122,10 +141,10 @@ namespace AURA_Frontend
             {
                 chatModel = new ImageChatModel()
                 {
-                    Author = chatbox_info.User,
+                    Author = author,
                     Image = Image.FromStream(new MemoryStream(chatbox_info.Attachment)),
                     ImageName = chatbox_info.AttachmentName,
-                    Inbound = false,
+                    Inbound = isReceiver,
                     Read = true,
                     Time = DateTime.Now,
                 };
@@ -135,22 +154,22 @@ namespace AURA_Frontend
             {
                 chatModel = new AttachmentChatModel()
                 {
-                    Author = chatbox_info.User,
+                    Author = author,
                     Attachment = chatbox_info.Attachment,
                     Filename = chatbox_info.AttachmentName,
                     Read = true,
-                    Inbound = false,
+                    Inbound = isReceiver,
                     Time = DateTime.Now
                 };
             }
 
-            if (!string.IsNullOrWhiteSpace(chatMessage) && chatMessage != chatbox_info.ChatPlaceholder)
+            if (!string.IsNullOrWhiteSpace(message) && message != chatbox_info.ChatPlaceholder)
             {
                 textModel = new TextChatModel()
                 {
-                    Author = chatbox_info.User,
-                    Body = chatMessage,
-                    Inbound = false,
+                    Author = author,
+                    Body = message,
+                    Inbound = isReceiver,
                     Read = true,
                     Time = DateTime.Now
                 };
@@ -168,7 +187,7 @@ namespace AURA_Frontend
                 if (chatModel != null)
                 {
                     AddMessage(chatModel);
-                    CancelAttachment(null, null);
+                    cancelAttachment();
                 }
                 if (textModel != null)
                 {
@@ -181,9 +200,9 @@ namespace AURA_Frontend
                 //If any exception is found, then it is printed on the screen. Feel free to change this method if you don't want people to see exceptions.
                 textModel = new TextChatModel()
                 {
-                    Author = chatbox_info.User,
+                    Author = author,
                     Body = "The message could not be processed. Please see the reason below.\r\n" + exc.Message,
-                    Inbound = false,
+                    Inbound = isReceiver,
                     Read = true,
                     Time = DateTime.Now
                 };
@@ -191,7 +210,13 @@ namespace AURA_Frontend
             }
         }
 
-        void BuildAttachment(object sender, EventArgs e)
+
+        void attachButton_Click(object sender, EventArgs e)
+        {
+            buildAttachment();
+        }
+
+        private void buildAttachment()
         {
             fileDialog.InitialDirectory = initialdirectory;
             fileDialog.Reset();
@@ -249,7 +274,12 @@ namespace AURA_Frontend
             }
         }
 
-        void CancelAttachment(object sender, EventArgs e)
+        void removeButton_Click(object sender, EventArgs e)
+        {
+            cancelAttachment();
+        }
+
+        private void cancelAttachment()
         {
             attachButton.Text = string.Empty;
             chatbox_info.Attachment = null;
@@ -260,11 +290,16 @@ namespace AURA_Frontend
         }
 
         //Inspired from Slack, you can also press Shift + Enter to enter text.
-        async void OnEnter(object sender, KeyEventArgs e)
+        private void chatTextbox_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Shift && e.KeyValue == 13)
+            sendMessageOnShiftEnter(e.Shift, e.KeyCode);
+        }
+
+        private async void sendMessageOnShiftEnter(bool wasShiftPressed, Keys pressedKey)
+        {
+            if (wasShiftPressed && pressedKey == Keys.Enter)
             {
-                sendButton_Click(this, null);
+                sendUserTypedMessage();
             }
         }
 
