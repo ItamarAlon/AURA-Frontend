@@ -31,27 +31,46 @@
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             panel1 = new Panel();
             mainScreen = new SelectRepoScreen();
+            menuStrip1 = new MenuStrip();
+            settingsToolStripMenuItem = new ToolStripMenuItem();
             panel1.SuspendLayout();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Controls.Add(mainScreen);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(2, 2, 2, 2);
+            panel1.Location = new Point(0, 28);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(857, 600);
+            panel1.Size = new Size(857, 572);
             panel1.TabIndex = 0;
             // 
             // mainScreen
             // 
             mainScreen.Dock = DockStyle.Fill;
             mainScreen.Location = new Point(0, 0);
-            mainScreen.Margin = new Padding(1, 1, 1, 1);
+            mainScreen.Margin = new Padding(1);
             mainScreen.Name = "mainScreen";
-            mainScreen.Size = new Size(857, 600);
+            mainScreen.Size = new Size(857, 572);
             mainScreen.TabIndex = 0;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { settingsToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(857, 28);
+            menuStrip1.TabIndex = 1;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // settingsToolStripMenuItem
+            // 
+            settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            settingsToolStripMenuItem.Size = new Size(76, 24);
+            settingsToolStripMenuItem.Text = "Settings";
             // 
             // Form1
             // 
@@ -59,16 +78,22 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(857, 600);
             Controls.Add(panel1);
-            Margin = new Padding(4, 4, 4, 4);
+            Controls.Add(menuStrip1);
+            Margin = new Padding(4);
             Name = "Form1";
             Text = "Form1";
             panel1.ResumeLayout(false);
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Panel panel1;
         private SelectRepoScreen mainScreen;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem settingsToolStripMenuItem;
     }
 }
