@@ -14,11 +14,18 @@ namespace AURA_Frontend
     {
         public event EventHandler GoToMainScreenRequested;
 
-        public Repository Repo { get; set; }
+        public Repository Repository { get; }
 
         public RepoManagerScreen()
         {
             InitializeComponent();
+        }
+
+        public RepoManagerScreen(Repository i_Repository)
+        {
+            InitializeComponent();
+            Repository = i_Repository;
+            statusBar1.Status = Repository.Status;
         }
 
         protected virtual void OnGoToMainScreenRequested(EventArgs e)

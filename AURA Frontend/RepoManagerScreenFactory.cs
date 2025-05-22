@@ -16,7 +16,7 @@ namespace AURA_Frontend
 
             if (!sr_RepoToScreenDict.TryGetValue(repo, out screen))
             {
-                screen = new RepoManagerScreen() { Repo = repo };
+                screen = new RepoManagerScreen(repo);
                 sr_RepoToScreenDict[repo] = screen;
             }
 

@@ -30,13 +30,15 @@
         {
             goBackButton = new Button();
             chatbox1 = new Chatbox();
+            statusBar1 = new StatusBar();
             SuspendLayout();
             // 
             // goBackButton
             // 
-            goBackButton.Location = new Point(3, 3);
+            goBackButton.Location = new Point(2, 2);
+            goBackButton.Margin = new Padding(2);
             goBackButton.Name = "goBackButton";
-            goBackButton.Size = new Size(150, 46);
+            goBackButton.Size = new Size(92, 29);
             goBackButton.TabIndex = 3;
             goBackButton.Text = "Go Back";
             goBackButton.UseVisualStyleBackColor = true;
@@ -45,26 +47,37 @@
             // chatbox1
             // 
             chatbox1.BackColor = Color.White;
-            chatbox1.Location = new Point(284, 21);
-            chatbox1.Margin = new Padding(7, 6, 7, 6);
+            chatbox1.Location = new Point(175, 13);
+            chatbox1.Margin = new Padding(4, 4, 4, 4);
             chatbox1.Name = "chatbox1";
-            chatbox1.Size = new Size(727, 672);
+            chatbox1.Size = new Size(447, 420);
             chatbox1.TabIndex = 4;
+            // 
+            // statusBar1
+            // 
+            statusBar1.Location = new Point(691, 128);
+            statusBar1.Name = "statusBar1";
+            statusBar1.Size = new Size(91, 29);
+            statusBar1.Status = null;
+            statusBar1.TabIndex = 5;
             // 
             // RepoManagerScreen
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
+            Controls.Add(statusBar1);
             Controls.Add(chatbox1);
             Controls.Add(goBackButton);
+            Margin = new Padding(2);
             Name = "RepoManagerScreen";
-            Size = new Size(3045, 1332);
+            Size = new Size(857, 600);
             ResumeLayout(false);
         }
 
         #endregion
         private Button goBackButton;
         private Chatbox chatbox1;
+        private StatusBar statusBar1;
     }
 }

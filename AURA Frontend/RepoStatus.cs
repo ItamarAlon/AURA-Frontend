@@ -14,7 +14,6 @@ namespace AURA_Frontend
         public enum eStatus { Done, Error, Warning }
 
         private readonly eStatus r_Status;
-        public string Status => r_Status.ToString();
         public Color Color { get; }
 
         public RepoStatus(eStatus i_Status)
@@ -41,7 +40,7 @@ namespace AURA_Frontend
 
         public override string ToString()
         {
-            return Status;
+            return r_Status.ToString();
         }
 
         private eStatus convertStringToStatus(string i_StatusStr)
