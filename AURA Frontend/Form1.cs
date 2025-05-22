@@ -10,6 +10,7 @@ namespace AURA_Frontend
         {
             InitializeComponent();
             mainScreen.RepoSelected += reposTable_RepoSelected;
+            enableDynamicParentMenuLabel(llmMenuItem);
         }
 
         private void reposTable_RepoSelected(object sender, EventArgs<Repository> e)
@@ -44,5 +45,24 @@ namespace AURA_Frontend
         {
             switchScreen(mainScreen);
         }
+
+        private void enableDynamicParentMenuLabel(ToolStripMenuItem parentItem)
+        {
+            foreach (ToolStripItem child in parentItem.DropDownItems)
+            {
+                if (child is ToolStripMenuItem childItem)
+                {
+                    childItem.Click += (sender, e) =>
+                    {
+                        ToolStripMenuItem clickedItem = sender as ToolStripMenuItem;
+
+                        // Update parent text and image
+                        parentItem.Text = clickedItem.Text;
+                        parentItem.Image = clickedItem.Image;
+                    };
+                }
+            }
+        }
+
     }
 }
