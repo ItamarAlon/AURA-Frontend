@@ -53,13 +53,14 @@ namespace AURA_Frontend
 
         private Color getStatusColor()
         {
-            Color color = Color.Gray;
+            Color color;
 
             switch (r_Status)
             {
                 case eStatus.Done: color = Color.Green; break;
                 case eStatus.Error: color = Color.Red; break;
                 case eStatus.Warning: color = Color.Orange; break;
+                default: color = Color.Gray; break;
             }
 
             return color;
