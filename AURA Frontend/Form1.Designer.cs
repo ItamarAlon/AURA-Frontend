@@ -39,25 +39,27 @@
             panel1.Controls.Add(mainScreen);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(2, 2, 2, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1393, 960);
+            panel1.Size = new Size(857, 600);
             panel1.TabIndex = 0;
             // 
             // mainScreen
             // 
             mainScreen.Dock = DockStyle.Fill;
             mainScreen.Location = new Point(0, 0);
+            mainScreen.Margin = new Padding(1, 1, 1, 1);
             mainScreen.Name = "mainScreen";
-            mainScreen.Size = new Size(1393, 960);
+            mainScreen.Size = new Size(857, 600);
             mainScreen.TabIndex = 0;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1393, 960);
+            ClientSize = new Size(857, 600);
             Controls.Add(panel1);
-            Margin = new Padding(6);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "Form1";
             Text = "Form1";
             panel1.ResumeLayout(false);

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static AURA_Frontend.Repository;
+using static AURA_Frontend.RepoStatus;
 
 namespace AURA_Frontend
 {
@@ -55,36 +56,29 @@ namespace AURA_Frontend
 
         private void drawDot(DataGridViewCellPaintingEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < repositoryBindingSource.Count && e.ColumnIndex == dataGridView1.Columns["State"].Index)
+            if (e.RowIndex >= 0 && e.ColumnIndex == dataGridView1.Columns["State"].Index)
             {
                 e.PaintBackground(e.ClipBounds, true);
                 e.Handled = true;
 
-                Color dotColor = getDotColorFromRepo(this[e.RowIndex]);
-                int diameter = 14;
-                int x = e.CellBounds.Left + (e.CellBounds.Width - diameter) / 2;
-                int y = e.CellBounds.Top + (e.CellBounds.Height - diameter) / 2;
+                Color color = this[e.RowIndex].Status.Color;
 
-                using (SolidBrush brush = new SolidBrush(dotColor))
+                // Prevent duplicate controls
+                var existing = dataGridView1.Controls
+                    .OfType<DotIndicator>()
+                    .FirstOrDefault(c => c.Tag as Point? == new Point(e.RowIndex, e.ColumnIndex));
+                if (existing != null) return;
+                
+                DotIndicator dot = new DotIndicator
                 {
-                    e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                    e.Graphics.FillEllipse(brush, x, y, diameter, diameter);
-                }
+                    DotColor = color,
+                    Location = e.CellBounds.Location,
+                    Size = e.CellBounds.Size,
+                    Tag = new Point(e.RowIndex, e.ColumnIndex) // Prevent duplication
+                };
+
+                dataGridView1.Controls.Add(dot);
             }
-        }
-
-        private Color getDotColorFromRepo(Repository repo)
-        {
-            Color dotColor = Color.Gray;
-
-            switch (repo.Status)
-            {
-                case eStatus.Done: dotColor = Color.Green; break;
-                case eStatus.Error: dotColor = Color.Red; break;
-                case eStatus.Warning: dotColor = Color.Orange; break;
-            }
-
-            return dotColor;
         }
 
         private void dataGridView1_DoubleClick(object sender, EventArgs e)

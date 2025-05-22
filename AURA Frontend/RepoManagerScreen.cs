@@ -33,7 +33,7 @@ namespace AURA_Frontend
 
         ~RepoManagerScreen()
         {
-            MessageBox.Show("Screen Removed");
+            //MessageBox.Show("Screen Removed");
         }
     }
 }

@@ -22,9 +22,9 @@ namespace AURA_Frontend
 
         private void button1_Click(object sender, EventArgs e)
         {
-            reposTable.AddItem(new Repository { Name = "Hello", Status = Repository.eStatus.Error });
-            reposTable.AddItem(new Repository { Name = "World", Status = Repository.eStatus.Done });
-            reposTable.AddItem(new Repository { Name = "How", Status = Repository.eStatus.Warning });
+            reposTable.AddItem(new Repository { Name = "Hello", Status = RepoStatus.eStatus.Error });
+            reposTable.AddItem(new Repository { Name = "World", Status = RepoStatus.eStatus.Done });
+            reposTable.AddItem(new Repository { Name = "How", Status = RepoStatus.eStatus.Warning });
         }
     }
 }

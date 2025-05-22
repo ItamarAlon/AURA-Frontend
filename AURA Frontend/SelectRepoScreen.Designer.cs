@@ -39,20 +39,20 @@
             // 
             reposTable.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             reposTable.Location = new Point(0, 0);
-            reposTable.Margin = new Padding(11, 13, 11, 13);
-            reposTable.MaximumSize = new Size(464, 0);
-            reposTable.MinimumSize = new Size(0, 431);
+            reposTable.Margin = new Padding(7, 8, 7, 8);
+            reposTable.MaximumSize = new Size(286, 0);
+            reposTable.MinimumSize = new Size(345, 269);
             reposTable.Name = "reposTable";
-            reposTable.Size = new Size(433, 543);
+            reposTable.Size = new Size(345, 280);
             reposTable.TabIndex = 4;
             // 
             // button1
             // 
             button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            button1.Location = new Point(145, 660);
-            button1.Margin = new Padding(6);
+            button1.Location = new Point(126, 412);
+            button1.Margin = new Padding(4);
             button1.Name = "button1";
-            button1.Size = new Size(139, 49);
+            button1.Size = new Size(86, 31);
             button1.TabIndex = 5;
             button1.Text = "Add Repo";
             button1.UseVisualStyleBackColor = true;
@@ -63,19 +63,20 @@
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             panel1.Controls.Add(reposTable);
             panel1.Controls.Add(button1);
-            panel1.Location = new Point(444, 118);
+            panel1.Location = new Point(242, 78);
             panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(434, 709);
+            panel1.Size = new Size(345, 443);
             panel1.TabIndex = 6;
             // 
             // SelectRepoScreen
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
+            Margin = new Padding(2);
             Name = "SelectRepoScreen";
-            Size = new Size(1393, 960);
+            Size = new Size(857, 600);
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
