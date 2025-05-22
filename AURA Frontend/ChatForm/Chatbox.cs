@@ -28,13 +28,11 @@ namespace AURA_Frontend
                 Sender = "User",
                 Receiver = "LLM",
                 NamePlaceholder = "The User",
-                PhonePlaceholder = "05242",
                 StatusPlaceholder = "On"
             };
 
             clientnameLabel.Text = chatbox_info.NamePlaceholder;
             statusLabel.Text = chatbox_info.StatusPlaceholder;
-            phoneLabel.Text = chatbox_info.PhonePlaceholder;
             chatTextbox.Text = chatbox_info.ChatPlaceholder;
 
             chatTextbox.Enter += chatTextBox_Enter;
@@ -55,7 +53,6 @@ namespace AURA_Frontend
 
             clientnameLabel.Text = chatbox_info.NamePlaceholder;
             statusLabel.Text = chatbox_info.StatusPlaceholder;
-            phoneLabel.Text = chatbox_info.PhonePlaceholder;
             chatTextbox.Text = chatbox_info.ChatPlaceholder;
 
             chatTextbox.Enter += chatTextBox_Enter;

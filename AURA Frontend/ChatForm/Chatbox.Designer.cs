@@ -31,7 +31,6 @@ namespace AURA_Frontend
         {
             topPanel = new Panel();
             statusLabel = new Label();
-            phoneLabel = new Label();
             clientnameLabel = new Label();
             bottomPanel = new Panel();
             chatTextbox = new TextBox();
@@ -47,15 +46,14 @@ namespace AURA_Frontend
             // 
             topPanel.BackColor = Color.RoyalBlue;
             topPanel.Controls.Add(statusLabel);
-            topPanel.Controls.Add(phoneLabel);
             topPanel.Controls.Add(clientnameLabel);
             topPanel.Dock = DockStyle.Top;
             topPanel.ForeColor = SystemColors.ButtonHighlight;
             topPanel.Location = new Point(0, 0);
-            topPanel.Margin = new Padding(7, 6, 7, 6);
+            topPanel.Margin = new Padding(4);
             topPanel.Name = "topPanel";
-            topPanel.Padding = new Padding(33, 36, 33, 36);
-            topPanel.Size = new Size(890, 190);
+            topPanel.Padding = new Padding(20, 22, 20, 22);
+            topPanel.Size = new Size(548, 97);
             topPanel.TabIndex = 0;
             topPanel.Paint += topPanel_Paint;
             // 
@@ -65,25 +63,12 @@ namespace AURA_Frontend
             statusLabel.Dock = DockStyle.Right;
             statusLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             statusLabel.ForeColor = SystemColors.ControlLightLight;
-            statusLabel.Location = new Point(720, 87);
-            statusLabel.Margin = new Padding(7, 0, 7, 0);
+            statusLabel.Location = new Point(443, 54);
+            statusLabel.Margin = new Padding(4, 0, 4, 0);
             statusLabel.Name = "statusLabel";
-            statusLabel.Size = new Size(137, 32);
+            statusLabel.Size = new Size(85, 20);
             statusLabel.TabIndex = 2;
             statusLabel.Text = "LastViewed";
-            // 
-            // phoneLabel
-            // 
-            phoneLabel.AutoSize = true;
-            phoneLabel.Dock = DockStyle.Bottom;
-            phoneLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
-            phoneLabel.ForeColor = SystemColors.ControlLightLight;
-            phoneLabel.Location = new Point(33, 109);
-            phoneLabel.Margin = new Padding(7, 0, 7, 0);
-            phoneLabel.Name = "phoneLabel";
-            phoneLabel.Size = new Size(239, 45);
-            phoneLabel.TabIndex = 1;
-            phoneLabel.Text = "(408) 262-9190";
             // 
             // clientnameLabel
             // 
@@ -91,10 +76,10 @@ namespace AURA_Frontend
             clientnameLabel.Dock = DockStyle.Top;
             clientnameLabel.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
             clientnameLabel.ForeColor = SystemColors.ControlLightLight;
-            clientnameLabel.Location = new Point(33, 36);
-            clientnameLabel.Margin = new Padding(7, 0, 7, 0);
+            clientnameLabel.Location = new Point(20, 22);
+            clientnameLabel.Margin = new Padding(4, 0, 4, 0);
             clientnameLabel.Name = "clientnameLabel";
-            clientnameLabel.Size = new Size(235, 51);
+            clientnameLabel.Size = new Size(149, 32);
             clientnameLabel.TabIndex = 0;
             clientnameLabel.Text = "Client Name";
             // 
@@ -107,21 +92,21 @@ namespace AURA_Frontend
             bottomPanel.Controls.Add(sendButton);
             bottomPanel.Dock = DockStyle.Bottom;
             bottomPanel.ForeColor = SystemColors.ControlLightLight;
-            bottomPanel.Location = new Point(0, 1351);
-            bottomPanel.Margin = new Padding(7, 6, 7, 6);
+            bottomPanel.Location = new Point(0, 845);
+            bottomPanel.Margin = new Padding(4);
             bottomPanel.Name = "bottomPanel";
-            bottomPanel.Padding = new Padding(33, 26, 33, 26);
-            bottomPanel.Size = new Size(890, 132);
+            bottomPanel.Padding = new Padding(20, 16, 20, 16);
+            bottomPanel.Size = new Size(548, 82);
             bottomPanel.TabIndex = 1;
             // 
             // chatTextbox
             // 
             chatTextbox.Dock = DockStyle.Fill;
-            chatTextbox.Location = new Point(33, 26);
-            chatTextbox.Margin = new Padding(7, 6, 7, 6);
+            chatTextbox.Location = new Point(20, 16);
+            chatTextbox.Margin = new Padding(4);
             chatTextbox.Multiline = true;
             chatTextbox.Name = "chatTextbox";
-            chatTextbox.Size = new Size(544, 80);
+            chatTextbox.Size = new Size(336, 50);
             chatTextbox.TabIndex = 7;
             // 
             // attachButton
@@ -132,10 +117,10 @@ namespace AURA_Frontend
             attachButton.FlatStyle = FlatStyle.Flat;
             attachButton.ForeColor = SystemColors.ControlText;
             attachButton.ImageAlign = ContentAlignment.MiddleLeft;
-            attachButton.Location = new Point(577, 26);
-            attachButton.Margin = new Padding(7, 6, 7, 6);
+            attachButton.Location = new Point(356, 16);
+            attachButton.Margin = new Padding(4);
             attachButton.Name = "attachButton";
-            attachButton.Size = new Size(76, 80);
+            attachButton.Size = new Size(47, 50);
             attachButton.TabIndex = 6;
             attachButton.TextAlign = ContentAlignment.MiddleRight;
             attachButton.UseVisualStyleBackColor = false;
@@ -147,10 +132,10 @@ namespace AURA_Frontend
             removeButton.FlatStyle = FlatStyle.Popup;
             removeButton.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold);
             removeButton.ForeColor = SystemColors.ControlLightLight;
-            removeButton.Location = new Point(653, 26);
-            removeButton.Margin = new Padding(7, 6, 7, 6);
+            removeButton.Location = new Point(403, 16);
+            removeButton.Margin = new Padding(4);
             removeButton.Name = "removeButton";
-            removeButton.Size = new Size(41, 80);
+            removeButton.Size = new Size(25, 50);
             removeButton.TabIndex = 5;
             removeButton.Text = "X";
             removeButton.UseVisualStyleBackColor = false;
@@ -162,10 +147,10 @@ namespace AURA_Frontend
             sendButton.Dock = DockStyle.Right;
             sendButton.FlatStyle = FlatStyle.Flat;
             sendButton.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            sendButton.Location = new Point(694, 26);
-            sendButton.Margin = new Padding(7, 6, 7, 6);
+            sendButton.Location = new Point(428, 16);
+            sendButton.Margin = new Padding(4);
             sendButton.Name = "sendButton";
-            sendButton.Size = new Size(163, 80);
+            sendButton.Size = new Size(100, 50);
             sendButton.TabIndex = 1;
             sendButton.Text = "Send";
             sendButton.UseVisualStyleBackColor = false;
@@ -174,23 +159,23 @@ namespace AURA_Frontend
             // 
             itemsPanel.AutoScroll = true;
             itemsPanel.Dock = DockStyle.Fill;
-            itemsPanel.Location = new Point(0, 190);
-            itemsPanel.Margin = new Padding(7, 6, 7, 6);
+            itemsPanel.Location = new Point(0, 97);
+            itemsPanel.Margin = new Padding(4);
             itemsPanel.Name = "itemsPanel";
-            itemsPanel.Size = new Size(890, 1161);
+            itemsPanel.Size = new Size(548, 748);
             itemsPanel.TabIndex = 2;
             // 
             // Chatbox
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             Controls.Add(itemsPanel);
             Controls.Add(bottomPanel);
             Controls.Add(topPanel);
-            Margin = new Padding(7, 6, 7, 6);
+            Margin = new Padding(4);
             Name = "Chatbox";
-            Size = new Size(890, 1483);
+            Size = new Size(548, 927);
             topPanel.ResumeLayout(false);
             topPanel.PerformLayout();
             bottomPanel.ResumeLayout(false);
@@ -202,7 +187,6 @@ namespace AURA_Frontend
 
         private System.Windows.Forms.Panel topPanel;
 		private System.Windows.Forms.Label statusLabel;
-		private System.Windows.Forms.Label phoneLabel;
 		private System.Windows.Forms.Label clientnameLabel;
 		private System.Windows.Forms.Panel bottomPanel;
 		private System.Windows.Forms.Button sendButton;
