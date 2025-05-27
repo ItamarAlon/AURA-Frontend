@@ -41,20 +41,21 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.None;
             panel1.Controls.Add(mainScreen);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 44);
+            panel1.Location = new Point(0, 21);
+            panel1.Margin = new Padding(2, 1, 2, 1);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1393, 916);
+            panel1.Size = new Size(750, 429);
             panel1.TabIndex = 0;
             // 
             // mainScreen
             // 
             mainScreen.Dock = DockStyle.Fill;
             mainScreen.Location = new Point(0, 0);
-            mainScreen.Margin = new Padding(2);
+            mainScreen.Margin = new Padding(1, 1, 1, 1);
             mainScreen.Name = "mainScreen";
-            mainScreen.Size = new Size(1393, 916);
+            mainScreen.Size = new Size(750, 429);
             mainScreen.TabIndex = 0;
             // 
             // menuStrip1
@@ -63,15 +64,15 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { settingsToolStripMenuItem, llmMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(10, 3, 0, 3);
-            menuStrip1.Size = new Size(1393, 44);
+            menuStrip1.Padding = new Padding(5, 1, 0, 1);
+            menuStrip1.Size = new Size(750, 24);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
             // settingsToolStripMenuItem
             // 
             settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            settingsToolStripMenuItem.Size = new Size(120, 38);
+            settingsToolStripMenuItem.Size = new Size(61, 22);
             settingsToolStripMenuItem.Text = "Settings";
             // 
             // llmMenuItem
@@ -79,24 +80,23 @@
             llmMenuItem.Alignment = ToolStripItemAlignment.Right;
             llmMenuItem.DropDownItems.AddRange(new ToolStripItem[] { chatgptMenuItem });
             llmMenuItem.Name = "llmMenuItem";
-            llmMenuItem.Size = new Size(78, 38);
+            llmMenuItem.Size = new Size(42, 22);
             llmMenuItem.Text = "LLM";
             // 
             // chatgptMenuItem
             // 
             chatgptMenuItem.Image = Properties.Resources.ChatGPT_Black_Logo;
             chatgptMenuItem.Name = "chatgptMenuItem";
-            chatgptMenuItem.Size = new Size(359, 44);
+            chatgptMenuItem.Size = new Size(119, 22);
             chatgptMenuItem.Text = "chatGPT";
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1393, 960);
+            ClientSize = new Size(750, 450);
             Controls.Add(panel1);
             Controls.Add(menuStrip1);
-            Margin = new Padding(6);
             Name = "Form1";
             Text = "Form1";
             panel1.ResumeLayout(false);

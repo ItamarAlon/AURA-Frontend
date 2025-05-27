@@ -26,5 +26,24 @@ namespace AURA_Frontend
             reposTable.AddItem(new Repository { Name = "World", Status = RepoStatus.eStatus.Done });
             reposTable.AddItem(new Repository { Name = "How", Status = RepoStatus.eStatus.Warning });
         }
+
+        private void centerPanel()
+        {
+            int x = (this.ClientSize.Width - panel1.Width) / 2;
+            //int x = panel1.Location.X;
+            //int y = (this.ClientSize.Height - panel1.Height) / 2;
+            int y = panel1.Location.Y;
+            panel1.Location = new Point(x, y);
+        }
+
+        private void SelectRepoScreen_Load(object sender, EventArgs e)
+        {
+            centerPanel();
+        }
+
+        private void SelectRepoScreen_Resize(object sender, EventArgs e)
+        {
+            centerPanel();
+        }
     }
 }
