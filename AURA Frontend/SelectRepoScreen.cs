@@ -36,13 +36,15 @@ namespace AURA_Frontend
             panel1.Location = new Point(x, y);
         }
 
-        private void SelectRepoScreen_Load(object sender, EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
+            base.OnLoad(e);
             centerPanel();
         }
 
-        private void SelectRepoScreen_Resize(object sender, EventArgs e)
+        protected override void OnResize(EventArgs e)
         {
+            base.OnResize(e);
             centerPanel();
         }
     }

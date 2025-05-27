@@ -39,6 +39,16 @@ namespace AURA_Frontend
             Status = i_Status;
         }
 
+        private void statusLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dotIndicator1_Load(object sender, EventArgs e)
+        {
+
+        }
+
         //[Browsable(true)]
         //[Category("Appearance")]
         //[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]

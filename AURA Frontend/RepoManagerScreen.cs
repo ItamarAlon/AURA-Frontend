@@ -38,6 +38,30 @@ namespace AURA_Frontend
             OnGoToMainScreenRequested(e);
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void runButton_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void statusBar1_Load(object sender, EventArgs e)
+        {
+
+        }
+
         ~RepoManagerScreen()
         {
             //MessageBox.Show("Screen Removed");

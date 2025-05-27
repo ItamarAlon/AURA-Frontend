@@ -41,21 +41,21 @@
             // 
             // panel1
             // 
-            panel1.Anchor = AnchorStyles.None;
             panel1.Controls.Add(mainScreen);
-            panel1.Location = new Point(0, 21);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 24);
             panel1.Margin = new Padding(2, 1, 2, 1);
             panel1.Name = "panel1";
-            panel1.Size = new Size(750, 429);
+            panel1.Size = new Size(888, 595);
             panel1.TabIndex = 0;
             // 
             // mainScreen
             // 
             mainScreen.Dock = DockStyle.Fill;
             mainScreen.Location = new Point(0, 0);
-            mainScreen.Margin = new Padding(1, 1, 1, 1);
+            mainScreen.Margin = new Padding(1);
             mainScreen.Name = "mainScreen";
-            mainScreen.Size = new Size(750, 429);
+            mainScreen.Size = new Size(888, 595);
             mainScreen.TabIndex = 0;
             // 
             // menuStrip1
@@ -65,7 +65,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(5, 1, 0, 1);
-            menuStrip1.Size = new Size(750, 24);
+            menuStrip1.Size = new Size(888, 24);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -94,7 +94,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(750, 450);
+            ClientSize = new Size(888, 619);
             Controls.Add(panel1);
             Controls.Add(menuStrip1);
             Name = "Form1";

@@ -79,8 +79,6 @@
             Margin = new Padding(2);
             Name = "SelectRepoScreen";
             Size = new Size(750, 426);
-            Load += SelectRepoScreen_Load;
-            Resize += SelectRepoScreen_Resize;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
