@@ -39,7 +39,12 @@
             comboBox1 = new ComboBox();
             panel1 = new Panel();
             label4 = new Label();
+            toolStrip1 = new ToolStrip();
+            toggleChatButton = new ToolStripButton();
+            mainPanel = new Panel();
             panel1.SuspendLayout();
+            toolStrip1.SuspendLayout();
+            mainPanel.SuspendLayout();
             SuspendLayout();
             // 
             // goBackButton
@@ -49,7 +54,7 @@
             goBackButton.FlatAppearance.BorderColor = SystemColors.Control;
             goBackButton.FlatStyle = FlatStyle.Flat;
             goBackButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            goBackButton.Location = new Point(96, 61);
+            goBackButton.Location = new Point(24, 19);
             goBackButton.Margin = new Padding(2);
             goBackButton.Name = "goBackButton";
             goBackButton.Size = new Size(72, 38);
@@ -61,40 +66,40 @@
             // chatbox1
             // 
             chatbox1.BackColor = Color.White;
-            chatbox1.Location = new Point(443, 81);
+            chatbox1.Dock = DockStyle.Right;
+            chatbox1.Location = new Point(443, 0);
             chatbox1.Margin = new Padding(4, 3, 4, 3);
             chatbox1.Name = "chatbox1";
-            chatbox1.Size = new Size(243, 357);
+            chatbox1.Size = new Size(270, 517);
             chatbox1.TabIndex = 4;
+            chatbox1.Visible = false;
             // 
             // statusBar1
             // 
             statusBar1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            statusBar1.Location = new Point(328, 302);
+            statusBar1.Location = new Point(256, 260);
             statusBar1.Margin = new Padding(10);
             statusBar1.Name = "statusBar1";
             statusBar1.RightToLeft = RightToLeft.Yes;
             statusBar1.Size = new Size(101, 25);
             statusBar1.Status = null;
             statusBar1.TabIndex = 5;
-            statusBar1.Load += statusBar1_Load;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(96, 123);
+            label1.Location = new Point(24, 81);
             label1.Name = "label1";
             label1.Size = new Size(194, 45);
             label1.TabIndex = 6;
             label1.Text = "Repo Name";
-            label1.Click += label1_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(285, 139);
+            label2.Location = new Point(213, 97);
             label2.Name = "label2";
             label2.Size = new Size(45, 25);
             label2.TabIndex = 7;
@@ -105,20 +110,19 @@
             textBox1.BackColor = SystemColors.Control;
             textBox1.BorderStyle = BorderStyle.None;
             textBox1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(96, 171);
+            textBox1.Location = new Point(24, 129);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
             textBox1.Size = new Size(234, 50);
             textBox1.TabIndex = 8;
             textBox1.Text = "Description";
-            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(96, 224);
+            label3.Location = new Point(24, 182);
             label3.Name = "label3";
             label3.Size = new Size(218, 20);
             label3.TabIndex = 9;
@@ -134,13 +138,12 @@
             runButton.FlatStyle = FlatStyle.Flat;
             runButton.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             runButton.ForeColor = Color.White;
-            runButton.Location = new Point(96, 257);
+            runButton.Location = new Point(24, 215);
             runButton.Name = "runButton";
             runButton.Size = new Size(150, 41);
             runButton.TabIndex = 10;
             runButton.Text = "Run";
             runButton.UseVisualStyleBackColor = false;
-            runButton.Paint += runButton_Paint;
             // 
             // comboBox1
             // 
@@ -150,7 +153,7 @@
             comboBox1.FormattingEnabled = true;
             comboBox1.ItemHeight = 34;
             comboBox1.Items.AddRange(new object[] { "Options", "Option 1", "Option 2" });
-            comboBox1.Location = new Point(252, 258);
+            comboBox1.Location = new Point(180, 216);
             comboBox1.Name = "comboBox1";
             comboBox1.RightToLeft = RightToLeft.No;
             comboBox1.Size = new Size(136, 40);
@@ -176,28 +179,64 @@
             label4.TabIndex = 0;
             label4.Text = "Path: users/home";
             // 
+            // toolStrip1
+            // 
+            toolStrip1.AutoSize = false;
+            toolStrip1.BackColor = Color.FromArgb(247, 248, 247);
+            toolStrip1.Dock = DockStyle.Right;
+            toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toggleChatButton });
+            toolStrip1.Location = new Point(713, 0);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(40, 517);
+            toolStrip1.TabIndex = 13;
+            toolStrip1.Text = "toolStrip1";
+            // 
+            // toggleChatButton
+            // 
+            toggleChatButton.AutoSize = false;
+            toggleChatButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            toggleChatButton.Image = Properties.Resources.ChatGPT_Black_Logo;
+            toggleChatButton.ImageTransparentColor = Color.Magenta;
+            toggleChatButton.Name = "toggleChatButton";
+            toggleChatButton.Size = new Size(40, 40);
+            toggleChatButton.Text = "Chat";
+            toggleChatButton.Click += toggleChatButton_Click;
+            // 
+            // mainPanel
+            // 
+            mainPanel.Controls.Add(comboBox1);
+            mainPanel.Controls.Add(goBackButton);
+            mainPanel.Controls.Add(runButton);
+            mainPanel.Controls.Add(statusBar1);
+            mainPanel.Controls.Add(label3);
+            mainPanel.Controls.Add(label1);
+            mainPanel.Controls.Add(textBox1);
+            mainPanel.Controls.Add(label2);
+            mainPanel.Location = new Point(200, 105);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new Size(361, 303);
+            mainPanel.TabIndex = 14;
+            // 
             // RepoManagerScreen
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            Controls.Add(panel1);
-            Controls.Add(comboBox1);
-            Controls.Add(runButton);
-            Controls.Add(label3);
-            Controls.Add(textBox1);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(statusBar1);
             Controls.Add(chatbox1);
-            Controls.Add(goBackButton);
+            Controls.Add(toolStrip1);
+            Controls.Add(panel1);
+            Controls.Add(mainPanel);
             Margin = new Padding(2);
             Name = "RepoManagerScreen";
             Size = new Size(753, 561);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
+            mainPanel.ResumeLayout(false);
+            mainPanel.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -212,5 +251,8 @@
         private ComboBox comboBox1;
         private Panel panel1;
         private Label label4;
+        private ToolStrip toolStrip1;
+        private ToolStripButton toggleChatButton;
+        private Panel mainPanel;
     }
 }

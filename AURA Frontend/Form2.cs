@@ -16,5 +16,10 @@ namespace AURA_Frontend
         {
             InitializeComponent();
         }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            chatbox1.Visible = !chatbox1.Visible;
+        }
     }
 }

@@ -38,28 +38,35 @@ namespace AURA_Frontend
             OnGoToMainScreenRequested(e);
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void toggleChatButton_Click(object sender, EventArgs e)
         {
-
+            toggleChat();
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        private void toggleChat()
         {
-
+            chatbox1.Visible = !chatbox1.Visible;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void centerPanel()
         {
-
+            int x = (this.ClientSize.Width - mainPanel.Width) / 2;
+            //int x = panel1.Location.X;
+            //int y = (this.ClientSize.Height - panel1.Height) / 2;
+            int y = mainPanel.Location.Y;
+            mainPanel.Location = new Point(x, y);
         }
 
-        private void runButton_Paint(object sender, PaintEventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
+            base.OnLoad(e);
+            centerPanel();
         }
 
-        private void statusBar1_Load(object sender, EventArgs e)
+        protected override void OnResize(EventArgs e)
         {
-
+            base.OnResize(e);
+            centerPanel();
         }
 
         ~RepoManagerScreen()
