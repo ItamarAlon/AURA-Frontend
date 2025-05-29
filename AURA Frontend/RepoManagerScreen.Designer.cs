@@ -195,6 +195,7 @@
             // toggleChatButton
             // 
             toggleChatButton.AutoSize = false;
+            toggleChatButton.CheckOnClick = true;
             toggleChatButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
             toggleChatButton.Image = Properties.Resources.ChatGPT_Black_Logo;
             toggleChatButton.ImageTransparentColor = Color.Magenta;
