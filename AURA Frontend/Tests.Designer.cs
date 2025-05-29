@@ -1,6 +1,6 @@
 ﻿namespace AURA_Frontend
 {
-    partial class Form2
+    partial class Tests
     {
         /// <summary>
         /// Required designer variable.

@@ -4,9 +4,9 @@ namespace AURA_Frontend
 {
     using Screen = UserControl;
 
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             mainScreen.RepoSelected += reposTable_RepoSelected;

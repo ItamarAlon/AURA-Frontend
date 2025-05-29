@@ -1,6 +1,6 @@
 ﻿namespace AURA_Frontend
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -43,10 +43,10 @@
             // 
             panel1.Controls.Add(mainScreen);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 24);
+            panel1.Location = new Point(0, 26);
             panel1.Margin = new Padding(2, 1, 2, 1);
             panel1.Name = "panel1";
-            panel1.Size = new Size(888, 595);
+            panel1.Size = new Size(1015, 799);
             panel1.TabIndex = 0;
             // 
             // mainScreen
@@ -55,7 +55,7 @@
             mainScreen.Location = new Point(0, 0);
             mainScreen.Margin = new Padding(1);
             mainScreen.Name = "mainScreen";
-            mainScreen.Size = new Size(888, 595);
+            mainScreen.Size = new Size(1015, 799);
             mainScreen.TabIndex = 0;
             // 
             // menuStrip1
@@ -64,15 +64,15 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { settingsToolStripMenuItem, llmMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(5, 1, 0, 1);
-            menuStrip1.Size = new Size(888, 24);
+            menuStrip1.Padding = new Padding(6, 1, 0, 1);
+            menuStrip1.Size = new Size(1015, 26);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
             // settingsToolStripMenuItem
             // 
             settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            settingsToolStripMenuItem.Size = new Size(61, 22);
+            settingsToolStripMenuItem.Size = new Size(76, 24);
             settingsToolStripMenuItem.Text = "Settings";
             // 
             // llmMenuItem
@@ -80,25 +80,26 @@
             llmMenuItem.Alignment = ToolStripItemAlignment.Right;
             llmMenuItem.DropDownItems.AddRange(new ToolStripItem[] { chatgptMenuItem });
             llmMenuItem.Name = "llmMenuItem";
-            llmMenuItem.Size = new Size(42, 22);
+            llmMenuItem.Size = new Size(50, 24);
             llmMenuItem.Text = "LLM";
             // 
             // chatgptMenuItem
             // 
             chatgptMenuItem.Image = Properties.Resources.ChatGPT_Black_Logo;
             chatgptMenuItem.Name = "chatgptMenuItem";
-            chatgptMenuItem.Size = new Size(119, 22);
+            chatgptMenuItem.Size = new Size(146, 26);
             chatgptMenuItem.Text = "chatGPT";
             // 
-            // Form1
+            // MainForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(888, 619);
+            ClientSize = new Size(1015, 825);
             Controls.Add(panel1);
             Controls.Add(menuStrip1);
-            Name = "Form1";
-            Text = "Form1";
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "MainForm";
+            Text = "A.U.R.A";
             panel1.ResumeLayout(false);
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

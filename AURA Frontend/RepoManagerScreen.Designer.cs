@@ -54,10 +54,10 @@
             goBackButton.FlatAppearance.BorderColor = SystemColors.Control;
             goBackButton.FlatStyle = FlatStyle.Flat;
             goBackButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            goBackButton.Location = new Point(24, 19);
-            goBackButton.Margin = new Padding(2);
+            goBackButton.Location = new Point(27, 25);
+            goBackButton.Margin = new Padding(2, 3, 2, 3);
             goBackButton.Name = "goBackButton";
-            goBackButton.Size = new Size(72, 38);
+            goBackButton.Size = new Size(82, 51);
             goBackButton.TabIndex = 3;
             goBackButton.Text = "← Back";
             goBackButton.UseVisualStyleBackColor = false;
@@ -67,21 +67,21 @@
             // 
             chatbox1.BackColor = Color.White;
             chatbox1.Dock = DockStyle.Right;
-            chatbox1.Location = new Point(443, 0);
-            chatbox1.Margin = new Padding(4, 3, 4, 3);
+            chatbox1.Location = new Point(506, 0);
+            chatbox1.Margin = new Padding(5, 4, 5, 4);
             chatbox1.Name = "chatbox1";
-            chatbox1.Size = new Size(270, 517);
+            chatbox1.Size = new Size(309, 689);
             chatbox1.TabIndex = 4;
             chatbox1.Visible = false;
             // 
             // statusBar1
             // 
             statusBar1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            statusBar1.Location = new Point(256, 260);
-            statusBar1.Margin = new Padding(10);
+            statusBar1.Location = new Point(293, 347);
+            statusBar1.Margin = new Padding(11, 13, 11, 13);
             statusBar1.Name = "statusBar1";
             statusBar1.RightToLeft = RightToLeft.Yes;
-            statusBar1.Size = new Size(101, 25);
+            statusBar1.Size = new Size(115, 33);
             statusBar1.Status = null;
             statusBar1.TabIndex = 5;
             // 
@@ -89,9 +89,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(24, 81);
+            label1.Location = new Point(27, 108);
             label1.Name = "label1";
-            label1.Size = new Size(194, 45);
+            label1.Size = new Size(243, 54);
             label1.TabIndex = 6;
             label1.Text = "Repo Name";
             // 
@@ -99,9 +99,9 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(213, 97);
+            label2.Location = new Point(243, 129);
             label2.Name = "label2";
-            label2.Size = new Size(45, 25);
+            label2.Size = new Size(57, 32);
             label2.TabIndex = 7;
             label2.Text = "v1.0";
             // 
@@ -110,11 +110,12 @@
             textBox1.BackColor = SystemColors.Control;
             textBox1.BorderStyle = BorderStyle.None;
             textBox1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(24, 129);
+            textBox1.Location = new Point(27, 172);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
-            textBox1.Size = new Size(234, 50);
+            textBox1.Size = new Size(267, 67);
             textBox1.TabIndex = 8;
             textBox1.Text = "Description";
             // 
@@ -122,9 +123,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(24, 182);
+            label3.Location = new Point(27, 243);
             label3.Name = "label3";
-            label3.Size = new Size(218, 20);
+            label3.Size = new Size(278, 25);
             label3.TabIndex = 9;
             label3.Text = "Last Modified: January 1st, 1970";
             // 
@@ -138,9 +139,10 @@
             runButton.FlatStyle = FlatStyle.Flat;
             runButton.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             runButton.ForeColor = Color.White;
-            runButton.Location = new Point(24, 215);
+            runButton.Location = new Point(27, 287);
+            runButton.Margin = new Padding(3, 4, 3, 4);
             runButton.Name = "runButton";
-            runButton.Size = new Size(150, 41);
+            runButton.Size = new Size(171, 55);
             runButton.TabIndex = 10;
             runButton.Text = "Run";
             runButton.UseVisualStyleBackColor = false;
@@ -153,10 +155,11 @@
             comboBox1.FormattingEnabled = true;
             comboBox1.ItemHeight = 34;
             comboBox1.Items.AddRange(new object[] { "Options", "Option 1", "Option 2" });
-            comboBox1.Location = new Point(180, 216);
+            comboBox1.Location = new Point(206, 288);
+            comboBox1.Margin = new Padding(3, 4, 3, 4);
             comboBox1.Name = "comboBox1";
             comboBox1.RightToLeft = RightToLeft.No;
-            comboBox1.Size = new Size(136, 40);
+            comboBox1.Size = new Size(155, 40);
             comboBox1.TabIndex = 11;
             // 
             // panel1
@@ -164,18 +167,19 @@
             panel1.BackColor = Color.FromArgb(247, 248, 247);
             panel1.Controls.Add(label4);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 517);
+            panel1.Location = new Point(0, 689);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(753, 44);
+            panel1.Size = new Size(861, 59);
             panel1.TabIndex = 12;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(3, 9);
+            label4.Location = new Point(3, 12);
             label4.Name = "label4";
-            label4.Size = new Size(157, 25);
+            label4.Size = new Size(198, 32);
             label4.TabIndex = 0;
             label4.Text = "Path: users/home";
             // 
@@ -185,10 +189,11 @@
             toolStrip1.BackColor = Color.FromArgb(247, 248, 247);
             toolStrip1.Dock = DockStyle.Right;
             toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
+            toolStrip1.ImageScalingSize = new Size(20, 20);
             toolStrip1.Items.AddRange(new ToolStripItem[] { toggleChatButton });
-            toolStrip1.Location = new Point(713, 0);
+            toolStrip1.Location = new Point(815, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(40, 517);
+            toolStrip1.Size = new Size(46, 689);
             toolStrip1.TabIndex = 13;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -214,23 +219,24 @@
             mainPanel.Controls.Add(label1);
             mainPanel.Controls.Add(textBox1);
             mainPanel.Controls.Add(label2);
-            mainPanel.Location = new Point(200, 105);
+            mainPanel.Location = new Point(229, 140);
+            mainPanel.Margin = new Padding(3, 4, 3, 4);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(361, 303);
+            mainPanel.Size = new Size(413, 404);
             mainPanel.TabIndex = 14;
             // 
             // RepoManagerScreen
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             Controls.Add(chatbox1);
             Controls.Add(toolStrip1);
             Controls.Add(panel1);
             Controls.Add(mainPanel);
-            Margin = new Padding(2);
+            Margin = new Padding(2, 3, 2, 3);
             Name = "RepoManagerScreen";
-            Size = new Size(753, 561);
+            Size = new Size(861, 748);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             toolStrip1.ResumeLayout(false);
