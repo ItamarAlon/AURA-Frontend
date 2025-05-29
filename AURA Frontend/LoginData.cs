@@ -27,5 +27,23 @@ namespace AURA_Frontend
                 return s_Instance;
             }
         }
+
+        public static bool IsStringAValidGitHubKey(string githubKey)
+        {
+            if (string.IsNullOrEmpty(githubKey))
+                return false;
+
+            //todo: check validility
+            return true;
+        }
+
+        public static bool IsStringAValidLLMKey(string llmKey)
+        {
+            if (string.IsNullOrEmpty(llmKey))
+                return false;
+
+            //todo: check validility
+            return true;
+        }
     }
 }

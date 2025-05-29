@@ -30,7 +30,7 @@ namespace AURA_Frontend
             }
             else
             {
-                MessageBox.Show("Please enter all keys");
+                MessageBox.Show("Not all entered keys are valid");
             }
         }
 
@@ -45,11 +45,13 @@ namespace AURA_Frontend
             string? githubKey = githubTextBox.Text;
             string? llmKey = llmTextBox.Text;
 
-            if (string.IsNullOrEmpty(githubKey) || string.IsNullOrEmpty(llmKey))
+            if (!LoginData.IsStringAValidGitHubKey(githubKey) || 
+                !LoginData.IsStringAValidLLMKey(llmKey))
                 return false;
 
-            LoginData.Instance.GitHubKey = githubKey;
+            LoginData.Instance.GitHubKey = githubKey;            
             LoginData.Instance.LLMKey = llmKey;
+            
             return true;
         }
     }
