@@ -40,7 +40,7 @@
             chatbox2.Location = new Point(0, 0);
             chatbox2.Margin = new Padding(4);
             chatbox2.Name = "chatbox2";
-            chatbox2.Size = new Size(549, 515);
+            chatbox2.Size = new Size(703, 544);
             chatbox2.TabIndex = 0;
             // 
             // roundedPanel1
@@ -49,9 +49,9 @@
             roundedPanel1.BorderThickness = 20;
             roundedPanel1.Controls.Add(chatbox2);
             roundedPanel1.CornerRadius = 1;
-            roundedPanel1.Location = new Point(273, 43);
+            roundedPanel1.Location = new Point(111, 44);
             roundedPanel1.Name = "roundedPanel1";
-            roundedPanel1.Size = new Size(549, 515);
+            roundedPanel1.Size = new Size(703, 544);
             roundedPanel1.TabIndex = 1;
             // 
             // Tests

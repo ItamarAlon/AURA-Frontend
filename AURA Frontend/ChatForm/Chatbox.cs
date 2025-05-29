@@ -27,11 +27,10 @@ namespace AURA_Frontend
             {
                 Sender = "User",
                 Receiver = "LLM",
-                NamePlaceholder = "The User",
                 StatusPlaceholder = "On"
             };
 
-            clientnameLabel.Text = chatbox_info.NamePlaceholder;
+            //clientnameLabel.Text = chatbox_info.NamePlaceholder;
             chatTextbox.Text = chatbox_info.ChatPlaceholder;
 
             chatTextbox.Enter += chatTextBox_Enter;
