@@ -69,6 +69,11 @@ namespace AURA_Frontend
             centerPanel();
         }
 
+        private void runButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
         ~RepoManagerScreen()
         {
             //MessageBox.Show("Screen Removed");

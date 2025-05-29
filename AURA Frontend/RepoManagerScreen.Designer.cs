@@ -32,19 +32,18 @@
             chatbox1 = new Chatbox();
             statusBar1 = new StatusBar();
             label1 = new Label();
-            label2 = new Label();
             textBox1 = new TextBox();
             label3 = new Label();
             runButton = new Button();
             comboBox1 = new ComboBox();
             panel1 = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
-            label5 = new Label();
+            label6 = new Label();
             label4 = new Label();
+            label5 = new Label();
             toolStrip1 = new ToolStrip();
             toggleChatButton = new ToolStripButton();
             mainPanel = new Panel();
-            label6 = new Label();
             panel1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             toolStrip1.SuspendLayout();
@@ -71,7 +70,7 @@
             // 
             chatbox1.BackColor = Color.White;
             chatbox1.Dock = DockStyle.Right;
-            chatbox1.Location = new Point(506, 0);
+            chatbox1.Location = new Point(516, 0);
             chatbox1.Margin = new Padding(5, 4, 5, 4);
             chatbox1.Name = "chatbox1";
             chatbox1.Size = new Size(309, 689);
@@ -99,27 +98,17 @@
             label1.TabIndex = 6;
             label1.Text = "Repo Name";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(264, 125);
-            label2.Name = "label2";
-            label2.Size = new Size(57, 32);
-            label2.TabIndex = 7;
-            label2.Text = "v1.0";
-            // 
             // textBox1
             // 
             textBox1.BackColor = SystemColors.Control;
             textBox1.BorderStyle = BorderStyle.None;
             textBox1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(27, 172);
+            textBox1.Location = new Point(27, 161);
             textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
-            textBox1.Size = new Size(267, 67);
+            textBox1.Size = new Size(278, 78);
             textBox1.TabIndex = 8;
             textBox1.Text = "Description";
             // 
@@ -150,6 +139,7 @@
             runButton.TabIndex = 10;
             runButton.Text = "Run";
             runButton.UseVisualStyleBackColor = false;
+            runButton.Click += runButton_Click;
             // 
             // comboBox1
             // 
@@ -157,13 +147,13 @@
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.ForeColor = SystemColors.WindowText;
             comboBox1.FormattingEnabled = true;
-            comboBox1.ItemHeight = 34;
+            comboBox1.ItemHeight = 50;
             comboBox1.Items.AddRange(new object[] { "Options", "Option 1", "Option 2" });
             comboBox1.Location = new Point(206, 288);
             comboBox1.Margin = new Padding(3, 4, 3, 4);
             comboBox1.Name = "comboBox1";
             comboBox1.RightToLeft = RightToLeft.No;
-            comboBox1.Size = new Size(155, 40);
+            comboBox1.Size = new Size(155, 56);
             comboBox1.TabIndex = 11;
             // 
             // panel1
@@ -194,18 +184,18 @@
             tableLayoutPanel1.Size = new Size(861, 59);
             tableLayoutPanel1.TabIndex = 15;
             // 
-            // label5
+            // label6
             // 
-            label5.AutoSize = true;
-            label5.Dock = DockStyle.Fill;
-            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(187, 0);
-            label5.Margin = new Padding(0);
-            label5.Name = "label5";
-            label5.Size = new Size(674, 59);
-            label5.TabIndex = 1;
-            label5.Text = "Version: 1.0";
-            label5.TextAlign = ContentAlignment.MiddleLeft;
+            label6.AutoSize = true;
+            label6.Dock = DockStyle.Fill;
+            label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Location = new Point(167, 0);
+            label6.Margin = new Padding(0);
+            label6.Name = "label6";
+            label6.Size = new Size(20, 59);
+            label6.TabIndex = 2;
+            label6.Text = "|";
+            label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
@@ -219,6 +209,19 @@
             label4.Text = "Path: users/home";
             label4.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Dock = DockStyle.Fill;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(187, 0);
+            label5.Margin = new Padding(0);
+            label5.Name = "label5";
+            label5.Size = new Size(674, 59);
+            label5.TabIndex = 1;
+            label5.Text = "Version: 1.0";
+            label5.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // toolStrip1
             // 
             toolStrip1.AutoSize = false;
@@ -227,9 +230,9 @@
             toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
             toolStrip1.ImageScalingSize = new Size(20, 20);
             toolStrip1.Items.AddRange(new ToolStripItem[] { toggleChatButton });
-            toolStrip1.Location = new Point(815, 0);
+            toolStrip1.Location = new Point(825, 0);
             toolStrip1.Name = "toolStrip1";
-            toolStrip1.Size = new Size(46, 689);
+            toolStrip1.Size = new Size(36, 689);
             toolStrip1.TabIndex = 13;
             toolStrip1.Text = "toolStrip1";
             // 
@@ -254,25 +257,11 @@
             mainPanel.Controls.Add(label3);
             mainPanel.Controls.Add(label1);
             mainPanel.Controls.Add(textBox1);
-            mainPanel.Controls.Add(label2);
-            mainPanel.Location = new Point(51, 81);
+            mainPanel.Location = new Point(47, 113);
             mainPanel.Margin = new Padding(3, 4, 3, 4);
             mainPanel.Name = "mainPanel";
             mainPanel.Size = new Size(418, 404);
             mainPanel.TabIndex = 14;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Dock = DockStyle.Fill;
-            label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(167, 0);
-            label6.Margin = new Padding(0);
-            label6.Name = "label6";
-            label6.Size = new Size(20, 59);
-            label6.TabIndex = 2;
-            label6.Text = "|";
-            label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // RepoManagerScreen
             // 
@@ -301,7 +290,6 @@
         private Chatbox chatbox1;
         private StatusBar statusBar1;
         private Label label1;
-        private Label label2;
         private TextBox textBox1;
         private Label label3;
         private Button runButton;
