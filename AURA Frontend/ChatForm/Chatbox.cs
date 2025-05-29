@@ -11,8 +11,8 @@ using System.Windows.Forms;
 
 namespace AURA_Frontend
 {
-	public partial class Chatbox : UserControl
-	{
+    public partial class Chatbox : UserControl
+    {
         public ChatboxInfo chatbox_info;
         public OpenFileDialog fileDialog = new OpenFileDialog();
         public string initialdirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -32,7 +32,6 @@ namespace AURA_Frontend
             };
 
             clientnameLabel.Text = chatbox_info.NamePlaceholder;
-            statusLabel.Text = chatbox_info.StatusPlaceholder;
             chatTextbox.Text = chatbox_info.ChatPlaceholder;
 
             chatTextbox.Enter += chatTextBox_Enter;
@@ -52,7 +51,6 @@ namespace AURA_Frontend
             chatbox_info = _chatbox_info;
 
             clientnameLabel.Text = chatbox_info.NamePlaceholder;
-            statusLabel.Text = chatbox_info.StatusPlaceholder;
             chatTextbox.Text = chatbox_info.ChatPlaceholder;
 
             chatTextbox.Enter += chatTextBox_Enter;
@@ -315,7 +313,27 @@ namespace AURA_Frontend
 
         private void topPanel_Paint(object sender, PaintEventArgs e)
         {
-
+            drawBorderAroundPanel(e, topPanel, Color.FromArgb(225, 227, 227));
         }
+
+        private void bottomPanel_Paint(object sender, PaintEventArgs e)
+        {
+            drawBorderAroundPanel(e, bottomPanel, Color.FromArgb(225, 227, 227));
+        }
+
+        private void itemsPanel_Paint(object sender, PaintEventArgs e)
+        {
+            //drawBorderAroundPanel(e, itemsPanel, Color.FromArgb(225, 227, 227));
+        }
+
+        private void drawBorderAroundPanel(PaintEventArgs e, Panel panel, Color color)
+        {
+            ControlPaint.DrawBorder(e.Graphics, panel.ClientRectangle,
+                color, 1, ButtonBorderStyle.Solid,  // left
+                color, 1, ButtonBorderStyle.Solid,  // top
+                color, 1, ButtonBorderStyle.Solid,  // right
+                color, 1, ButtonBorderStyle.Solid); // bottom
+        }
+
     }
 }
