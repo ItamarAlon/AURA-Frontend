@@ -28,48 +28,66 @@
         /// </summary>
         private void InitializeComponent()
         {
-            chatbox2 = new Chatbox();
-            roundedPanel1 = new RoundedPanel();
-            roundedPanel1.SuspendLayout();
+            materialListBox1 = new MaterialSkin.Controls.MaterialListBox();
+            dataGridView1 = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // chatbox2
+            // materialListBox1
             // 
-            chatbox2.BackColor = Color.White;
-            chatbox2.Dock = DockStyle.Fill;
-            chatbox2.Location = new Point(0, 0);
-            chatbox2.Margin = new Padding(4);
-            chatbox2.Name = "chatbox2";
-            chatbox2.Size = new Size(703, 544);
-            chatbox2.TabIndex = 0;
+            materialListBox1.BackColor = Color.White;
+            materialListBox1.BorderColor = Color.LightGray;
+            materialListBox1.Depth = 0;
+            materialListBox1.Font = new Font("Microsoft Sans Serif", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialListBox1.Location = new Point(212, 124);
+            materialListBox1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialListBox1.Name = "materialListBox1";
+            materialListBox1.SelectedIndex = -1;
+            materialListBox1.SelectedItem = null;
+            materialListBox1.Size = new Size(126, 82);
+            materialListBox1.TabIndex = 0;
             // 
-            // roundedPanel1
+            // dataGridView1
             // 
-            roundedPanel1.BorderColor = Color.Black;
-            roundedPanel1.BorderThickness = 20;
-            roundedPanel1.Controls.Add(chatbox2);
-            roundedPanel1.CornerRadius = 1;
-            roundedPanel1.Location = new Point(111, 44);
-            roundedPanel1.Name = "roundedPanel1";
-            roundedPanel1.Size = new Size(703, 544);
-            roundedPanel1.TabIndex = 1;
+            dataGridView1.BackgroundColor = SystemColors.Control;
+            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2 });
+            dataGridView1.Location = new Point(448, 134);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(240, 150);
+            dataGridView1.TabIndex = 1;
+            // 
+            // Column1
+            // 
+            Column1.HeaderText = "Column1";
+            Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "Column2";
+            Column2.Name = "Column2";
             // 
             // Tests
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
-            Controls.Add(roundedPanel1);
-            Margin = new Padding(3, 4, 3, 4);
+            ClientSize = new Size(800, 450);
+            Controls.Add(dataGridView1);
+            Controls.Add(materialListBox1);
             Name = "Tests";
             Text = "Form2";
-            roundedPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
         private Chatbox chatbox1;
-        private Chatbox chatbox2;
-        private RoundedPanel roundedPanel1;
+        private MaterialSkin.Controls.MaterialListBox materialListBox1;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
     }
 }

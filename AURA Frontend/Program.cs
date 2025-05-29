@@ -12,14 +12,14 @@ namespace AURA_Frontend
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            using (LoginForm login = new LoginForm())
-            {
-                if (login.ShowDialog() == DialogResult.OK)
-                {
-                    Application.Run(new MainForm());
-                }
-            }
-            //Application.Run(new Tests());
+            //using (LoginForm login = new LoginForm())
+            //{
+            //    if (login.ShowDialog() == DialogResult.OK)
+            //    {
+            //        Application.Run(new MainForm());
+            //    }
+            //}
+            Application.Run(new Tests());
         }
     }
 }

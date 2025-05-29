@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             reposTable = new ReposTable();
             button1 = new Button();
             panel1 = new Panel();
+            repositoryBindingSource = new BindingSource(components);
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)repositoryBindingSource).BeginInit();
             SuspendLayout();
             // 
             // reposTable
@@ -71,6 +74,10 @@
             panel1.Size = new Size(302, 308);
             panel1.TabIndex = 6;
             // 
+            // repositoryBindingSource
+            // 
+            repositoryBindingSource.DataSource = typeof(Repository);
+            // 
             // SelectRepoScreen
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -81,6 +88,7 @@
             Size = new Size(750, 426);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)repositoryBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -90,5 +98,6 @@
         private ReposTable reposTable;
         private Button button1;
         private Panel panel1;
+        private BindingSource repositoryBindingSource;
     }
 }

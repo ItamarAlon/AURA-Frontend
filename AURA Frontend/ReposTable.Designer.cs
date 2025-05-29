@@ -53,7 +53,6 @@
             dataGridView1.DataSource = repositoryBindingSource;
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 0);
-            dataGridView1.Margin = new Padding(6);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
@@ -65,7 +64,7 @@
             dataGridView1.ShowCellToolTips = false;
             dataGridView1.ShowEditingIcon = false;
             dataGridView1.ShowRowErrors = false;
-            dataGridView1.Size = new Size(1642, 1079);
+            dataGridView1.Size = new Size(884, 506);
             dataGridView1.TabIndex = 2;
             dataGridView1.CellPainting += dataGridView1_CellPainting;
             dataGridView1.DoubleClick += dataGridView1_DoubleClick;
@@ -103,12 +102,11 @@
             // 
             // ReposTable
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(dataGridView1);
-            Margin = new Padding(6);
             Name = "ReposTable";
-            Size = new Size(1642, 1079);
+            Size = new Size(884, 506);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryBindingSource).EndInit();
             ResumeLayout(false);

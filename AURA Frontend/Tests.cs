@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialSkin;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,8 @@ namespace AURA_Frontend
         public Tests()
         {
             InitializeComponent();
+            MaterialListBoxItem a = new MaterialListBoxItem();
+
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
