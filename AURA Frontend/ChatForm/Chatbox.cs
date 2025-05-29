@@ -256,15 +256,15 @@ namespace AURA_Frontend
                 if (smallname.Length > 12)
                 {
                     smallname = name.Substring(0, 7) + ".." + extension;
-                    attachButton.Text = smallname;
+                    //attachButton.Text = smallname;
                 }
                 else
                 {
-                    attachButton.Text = smallname;
+                    //attachButton.Text = smallname;
                 }
 
                 removeButton.Visible = true;
-                attachButton.Width = 115;
+                //attachButton.Width = 115;
                 chatbox_info.AttachmentType = ChatUtility.GetMimeType(extension);
             }
         }
@@ -335,5 +335,9 @@ namespace AURA_Frontend
                 color, 1, ButtonBorderStyle.Solid); // bottom
         }
 
+        private void attachButton_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
