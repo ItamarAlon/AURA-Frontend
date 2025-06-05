@@ -38,7 +38,7 @@ namespace AURA_Frontend
             if (Repository == null)
                 return;
 
-            statusBar1.Status = Repository.Status;
+            statusBar.Status = Repository.Status;
             repoNameLabel.Text = Repository.Name;
             lastModifiedLabel.Text = $"Last Modified: {Repository.LastModifiedTime.Date.ToString("dd.MM.yyyy")}";
             versionLabel.Text = $"Version: {Repository.Version}";
@@ -98,6 +98,14 @@ namespace AURA_Frontend
 
         private void runButton_Click(object sender, EventArgs e)
         {
+            notifyRunningWasRequestedAndChangeStatus();
+        }
+
+        private void notifyRunningWasRequestedAndChangeStatus()
+        {
+            Repository.Status = RepoStatus.eStatus.Running;
+            statusBar.Status = RepoStatus.eStatus.Running;
+            runButton.Enabled = false;
             OnStartRunningRequested(Repository);
         }
 

@@ -31,7 +31,7 @@
             components = new System.ComponentModel.Container();
             goBackButton = new Button();
             chatbox = new Chatbox();
-            statusBar1 = new StatusBar();
+            statusBar = new StatusBar();
             repoNameLabel = new Label();
             repositoryBindingSource = new BindingSource(components);
             descriptionTextBox = new TextBox();
@@ -82,14 +82,14 @@
             // 
             // statusBar1
             // 
-            statusBar1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            statusBar1.Location = new Point(292, 346);
-            statusBar1.Margin = new Padding(12, 13, 12, 13);
-            statusBar1.Name = "statusBar1";
-            statusBar1.RightToLeft = RightToLeft.Yes;
-            statusBar1.Size = new Size(116, 33);
-            statusBar1.Status = null;
-            statusBar1.TabIndex = 5;
+            statusBar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            statusBar.Location = new Point(292, 346);
+            statusBar.Margin = new Padding(12, 13, 12, 13);
+            statusBar.Name = "statusBar1";
+            statusBar.RightToLeft = RightToLeft.Yes;
+            statusBar.Size = new Size(116, 33);
+            statusBar.Status = null;
+            statusBar.TabIndex = 5;
             // 
             // repoNameLabel
             // 
@@ -251,7 +251,7 @@
             mainPanel.Controls.Add(button1);
             mainPanel.Controls.Add(goBackButton);
             mainPanel.Controls.Add(runButton);
-            mainPanel.Controls.Add(statusBar1);
+            mainPanel.Controls.Add(statusBar);
             mainPanel.Controls.Add(lastModifiedLabel);
             mainPanel.Controls.Add(repoNameLabel);
             mainPanel.Controls.Add(descriptionTextBox);
@@ -298,7 +298,7 @@
         #endregion
         private Button goBackButton;
         private Chatbox chatbox;
-        private StatusBar statusBar1;
+        private StatusBar statusBar;
         private Label repoNameLabel;
         private TextBox descriptionTextBox;
         private Label lastModifiedLabel;

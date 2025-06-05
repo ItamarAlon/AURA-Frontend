@@ -30,7 +30,6 @@ namespace AURA_Frontend
             screen.ChatMessageSent += repoManagerScreen_ChatMessageSent;
         }
 
-
         private void repoManagerScreen_StartRunningRequested(object? sender, EventArgs<Repository> e)
         {
             startAURA(e.Value);

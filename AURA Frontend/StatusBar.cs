@@ -38,36 +38,5 @@ namespace AURA_Frontend
             InitializeComponent();
             Status = i_Status;
         }
-
-        private void statusLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dotIndicator1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        //[Browsable(true)]
-        //[Category("Appearance")]
-        //[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        //public eStatus LabelTextStyle
-        //{
-        //    //get => _labelTextStyle;
-        //    set
-        //    {
-        //        Status = value;
-        //    }
-        //}
-        //
-        //[Browsable(true)]
-        //[Category("Appearance")]
-        //[DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        //public string Text
-        //{
-        //    get => statusLabel.Text;
-        //    set => statusLabel.Text = value;
-        //}
     }
 }

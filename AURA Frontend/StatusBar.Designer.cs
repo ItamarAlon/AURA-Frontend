@@ -45,7 +45,6 @@
             dotIndicator1.Name = "dotIndicator1";
             dotIndicator1.Size = new Size(17, 60);
             dotIndicator1.TabIndex = 0;
-            dotIndicator1.Load += dotIndicator1_Load;
             // 
             // statusLabel
             // 
@@ -58,7 +57,6 @@
             statusLabel.TabIndex = 1;
             statusLabel.Text = "status";
             statusLabel.TextAlign = ContentAlignment.MiddleCenter;
-            statusLabel.Click += statusLabel_Click;
             // 
             // tableLayoutPanel1
             // 

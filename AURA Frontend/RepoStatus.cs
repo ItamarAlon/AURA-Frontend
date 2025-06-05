@@ -11,7 +11,7 @@ namespace AURA_Frontend
 {
     public class RepoStatus
     {
-        public enum eStatus { Done, Error, Warning }
+        public enum eStatus { Done, Error, Warning, Running }
 
         private readonly eStatus r_Status;
         public Color Color { get; }
@@ -60,6 +60,7 @@ namespace AURA_Frontend
                 case eStatus.Done: color = Color.Green; break;
                 case eStatus.Error: color = Color.Red; break;
                 case eStatus.Warning: color = Color.Orange; break;
+                case eStatus.Running: color = Color.Blue; break;
                 default: color = Color.Gray; break;
             }
 
