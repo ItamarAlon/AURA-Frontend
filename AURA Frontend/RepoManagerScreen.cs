@@ -25,7 +25,29 @@ namespace AURA_Frontend
         {
             InitializeComponent();
             Repository = i_Repository;
+            bindRepositoryDataToScreen();
+        }
+
+        private void bindRepositoryDataToScreen()
+        {
+            if (Repository == null)
+                return;
+
             statusBar1.Status = Repository.Status;
+            repoNameLabel.Text = Repository.Name;
+            lastModifiedLabel.Text = $"Last Modified: {Repository.LastModifiedTime.Date.ToString("dd.MM.yyyy")}";
+            versionLabel.Text = $"Version: {Repository.Version}";
+            descriptionTextBox.Text = Repository.Description;
+
+            if (Repository.Path == null)
+            {
+                tableLayoutPanel1.Controls.Remove(pathLabel);
+                tableLayoutPanel1.Controls.Remove(tableSeperatorLabel);
+            }
+            else
+            {
+                pathLabel.Text = $"Path: {Repository.Path}";
+            }
         }
 
         protected virtual void OnGoToMainScreenRequested(EventArgs e)
