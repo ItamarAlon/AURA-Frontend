@@ -98,12 +98,12 @@ namespace AURA_Frontend
 
         private void runButton_Click(object sender, EventArgs e)
         {
-            OnStartRunningRequested(e);
+            OnStartRunningRequested(Repository);
         }
 
-        protected virtual void OnStartRunningRequested(EventArgs e)
+        protected virtual void OnStartRunningRequested(EventArgs<Repository> e)
         {
-            StartRunningRequested?.Invoke(this, new EventArgs<Repository>(Repository));
+            StartRunningRequested?.Invoke(this, e);
         }
 
         private void chatBox_MessageSent(object? sender, EventArgs<string> e)
