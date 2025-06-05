@@ -13,6 +13,7 @@ namespace AURA_Frontend
 {
     public partial class Chatbox : UserControl
     {
+        public event EventHandler<EventArgs<string>> MessageSent;
         public ChatboxInfo chatbox_info;
         public OpenFileDialog fileDialog = new OpenFileDialog();
         public string initialdirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -111,6 +112,7 @@ namespace AURA_Frontend
         {
             string chatMessage = chatTextbox.Text;
             SendMessage(chatMessage);
+            OnMessageSent(chatMessage);
         }
 
         public async void SendMessage(string message)
@@ -204,6 +206,10 @@ namespace AURA_Frontend
             }
         }
 
+        protected virtual void OnMessageSent(EventArgs<string> e)
+        {
+            MessageSent?.Invoke(this, e);
+        }
 
         void attachButton_Click(object sender, EventArgs e)
         {

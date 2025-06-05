@@ -14,5 +14,15 @@ namespace AURA_Frontend
         {
             Value = value;
         }
+
+        public static implicit operator EventArgs<T>(T value)
+        {
+            return new EventArgs<T>(value);
+        }
+
+        public static explicit operator T(EventArgs<T> e)
+        {
+            return e.Value;
+        }
     }
 }

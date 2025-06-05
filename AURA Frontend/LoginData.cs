@@ -9,7 +9,7 @@ namespace AURA_Frontend
     public sealed class LoginData
     {
         private static LoginData s_Instance;
-        private static readonly object key = true;
+        private static readonly object key = new object();
 
         public string GitHubKey { get; set; }
         public string LLMKey { get; set; }

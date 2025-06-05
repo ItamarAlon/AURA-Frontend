@@ -13,6 +13,8 @@ namespace AURA_Frontend
     public partial class RepoManagerScreen : UserControl, IHasGoBackOption
     {
         public event EventHandler GoToMainScreenRequested;
+        public event EventHandler<EventArgs<Repository>> StartRunningRequested;
+        public event EventHandler<EventArgs<string>> ChatMessageSent;
 
         public Repository Repository { get; }
 
@@ -26,7 +28,10 @@ namespace AURA_Frontend
             InitializeComponent();
             Repository = i_Repository;
             bindRepositoryDataToScreen();
+            chatbox.MessageSent += chatBox_MessageSent;
+            BackendConnector.Instance.RegisterRepoManagerScreen(this);
         }
+
 
         private void bindRepositoryDataToScreen()
         {
@@ -67,7 +72,7 @@ namespace AURA_Frontend
 
         private void toggleChat()
         {
-            chatbox1.Visible = !chatbox1.Visible;
+            chatbox.Visible = !chatbox.Visible;
         }
 
         private void centerPanel()
@@ -93,7 +98,22 @@ namespace AURA_Frontend
 
         private void runButton_Click(object sender, EventArgs e)
         {
+            OnStartRunningRequested(e);
+        }
 
+        protected virtual void OnStartRunningRequested(EventArgs e)
+        {
+            StartRunningRequested?.Invoke(this, new EventArgs<Repository>(Repository));
+        }
+
+        private void chatBox_MessageSent(object? sender, EventArgs<string> e)
+        {
+            OnChatMessageSent(e);
+        }
+
+        protected virtual void OnChatMessageSent(EventArgs<string> e)
+        {
+            ChatMessageSent?.Invoke(this, e);
         }
 
         ~RepoManagerScreen()
