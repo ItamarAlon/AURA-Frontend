@@ -57,10 +57,10 @@ namespace AURA_Frontend
 
             switch (r_Status)
             {
-                case eStatus.Done: color = Color.Green; break;
+                case eStatus.Done: color = Color.Lime; break;
                 case eStatus.Error: color = Color.Red; break;
                 case eStatus.Warning: color = Color.Orange; break;
-                case eStatus.Running: color = Color.Blue; break;
+                case eStatus.Running: color = Color.DodgerBlue; break;
                 default: color = Color.Gray; break;
             }
 

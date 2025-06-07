@@ -35,6 +35,7 @@ namespace AURA_Frontend
         {
             repositoryBindingSource.Add(item);
             adjustDataGridViewWidth();
+            dataGridView1.ClearSelection();
         }
 
         public void UpdateItemStatus(int index, eStatus newStatus)

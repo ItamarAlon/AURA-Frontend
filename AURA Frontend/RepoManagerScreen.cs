@@ -41,7 +41,7 @@ namespace AURA_Frontend
 
             statusBar.Status = Repository.Status;
             repoNameLabel.Text = Repository.Name;
-            lastModifiedLabel.Text = $"Last Modified: {Repository.LastModifiedTime.Date.ToString("dd.MM.yyyy")}";
+            lastModifiedLabel.Text = $"Last Modified: {Repository.LastModifiedTime.Date.ToString("dd/MM/yyyy")}";
             versionLabel.Text = $"Version: {Repository.Version}";
             descriptionTextBox.Text = Repository.Description;
 
