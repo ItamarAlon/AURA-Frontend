@@ -40,38 +40,38 @@
             // 
             // reposTable
             // 
-            reposTable.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             reposTable.AutoSize = true;
-            reposTable.Location = new Point(0, 0);
-            reposTable.Margin = new Padding(6);
-            reposTable.MaximumSize = new Size(250, 0);
-            reposTable.MinimumSize = new Size(302, 202);
+            reposTable.Location = new Point(22, 0);
+            reposTable.Margin = new Padding(11, 13, 11, 13);
+            reposTable.MaximumSize = new Size(600, 0);
+            reposTable.MinimumSize = new Size(0, 431);
             reposTable.Name = "reposTable";
-            reposTable.Size = new Size(302, 264);
+            reposTable.Size = new Size(286, 431);
             reposTable.TabIndex = 4;
             // 
             // button1
             // 
             button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            button1.Location = new Point(110, 285);
-            button1.Margin = new Padding(4, 3, 4, 3);
+            button1.Location = new Point(87, 608);
+            button1.Margin = new Padding(7, 6, 7, 6);
             button1.Name = "button1";
-            button1.Size = new Size(75, 23);
+            button1.Size = new Size(214, 49);
             button1.TabIndex = 5;
-            button1.Text = "Add Repo";
+            button1.Text = "Clone Repository";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // panel1
             // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             panel1.AutoSize = true;
+            panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panel1.Controls.Add(reposTable);
             panel1.Controls.Add(button1);
-            panel1.Location = new Point(187, 53);
+            panel1.Location = new Point(479, 111);
             panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(302, 308);
+            panel1.Size = new Size(319, 657);
             panel1.TabIndex = 6;
             // 
             // repositoryBindingSource
@@ -80,12 +80,12 @@
             // 
             // SelectRepoScreen
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
-            Margin = new Padding(2);
+            Margin = new Padding(4);
             Name = "SelectRepoScreen";
-            Size = new Size(750, 426);
+            Size = new Size(1393, 909);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)repositoryBindingSource).EndInit();

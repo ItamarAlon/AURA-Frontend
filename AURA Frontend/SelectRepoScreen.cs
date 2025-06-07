@@ -22,9 +22,19 @@ namespace AURA_Frontend
 
         private void button1_Click(object sender, EventArgs e)
         {
-            reposTable.AddItem(new Repository { Name = "Hello", Status = RepoStatus.eStatus.Error });
-            reposTable.AddItem(new Repository { Name = "World", Status = RepoStatus.eStatus.Done });
-            reposTable.AddItem(new Repository { Name = "How", Status = RepoStatus.eStatus.Warning });
+            reposTable.AddItem(new Repository
+            {
+                Name = "Pong Game 2",
+                Status = RepoStatus.eStatus.Done,
+                Description =
+                "The better version of Pong",
+                Version = "1.3"
+            });
+            reposTable.AddItem(new Repository { Name = "Grand Theft Auto VII", Status = RepoStatus.eStatus.Running });
+            reposTable.AddItem(new Repository { Name = "Concord", Status = RepoStatus.eStatus.Error });
+            reposTable.AddItem(new Repository { Name = "Very Awesome Project", Status = RepoStatus.eStatus.Done });
+
+            centerButtonToGrid();
         }
 
         private void centerPanel()
@@ -34,6 +44,13 @@ namespace AURA_Frontend
             //int y = (this.ClientSize.Height - panel1.Height) / 2;
             int y = panel1.Location.Y;
             panel1.Location = new Point(x, y);
+        }
+
+        private void centerButtonToGrid()
+        {
+            // Assume button1 is the button, and dataGridView1 is your grid
+            int buttonX = reposTable.Left + (reposTable.Width - button1.Width) / 2;
+            button1.Location = new Point(buttonX, button1.Location.Y);
         }
 
         protected override void OnLoad(EventArgs e)

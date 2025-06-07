@@ -41,8 +41,8 @@ namespace AURA_Frontend
             removeButton.Click += removeButton_Click;
             chatTextbox.KeyDown += chatTextbox_KeyDown;
 
-            SendMessage("Hello There");
-            ReceiveMessage("General Kenobi");
+            ReceiveMessage("Hi. How can I help you?");
+            //SendMessage("Hello There");
         }
         public Chatbox(ChatboxInfo _chatbox_info)
         {

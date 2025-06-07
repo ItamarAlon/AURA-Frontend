@@ -47,12 +47,15 @@
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
             dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView1.BackgroundColor = SystemColors.Window;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { State, nameDataGridViewTextBoxColumn, statusDataGridViewTextBoxColumn });
             dataGridView1.DataSource = repositoryBindingSource;
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 0);
+            dataGridView1.Margin = new Padding(6);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
@@ -64,7 +67,7 @@
             dataGridView1.ShowCellToolTips = false;
             dataGridView1.ShowEditingIcon = false;
             dataGridView1.ShowRowErrors = false;
-            dataGridView1.Size = new Size(884, 506);
+            dataGridView1.Size = new Size(1642, 1079);
             dataGridView1.TabIndex = 2;
             dataGridView1.CellPainting += dataGridView1_CellPainting;
             dataGridView1.DoubleClick += dataGridView1_DoubleClick;
@@ -76,7 +79,7 @@
             State.MinimumWidth = 10;
             State.Name = "State";
             State.ReadOnly = true;
-            State.Width = 30;
+            State.Width = 37;
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -85,7 +88,7 @@
             nameDataGridViewTextBoxColumn.MinimumWidth = 10;
             nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             nameDataGridViewTextBoxColumn.ReadOnly = true;
-            nameDataGridViewTextBoxColumn.Width = 200;
+            nameDataGridViewTextBoxColumn.Width = 123;
             // 
             // statusDataGridViewTextBoxColumn
             // 
@@ -94,7 +97,7 @@
             statusDataGridViewTextBoxColumn.MinimumWidth = 10;
             statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
             statusDataGridViewTextBoxColumn.ReadOnly = true;
-            statusDataGridViewTextBoxColumn.Width = 200;
+            statusDataGridViewTextBoxColumn.Width = 123;
             // 
             // repositoryBindingSource
             // 
@@ -102,11 +105,12 @@
             // 
             // ReposTable
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(dataGridView1);
+            Margin = new Padding(6);
             Name = "ReposTable";
-            Size = new Size(884, 506);
+            Size = new Size(1642, 1079);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryBindingSource).EndInit();
             ResumeLayout(false);

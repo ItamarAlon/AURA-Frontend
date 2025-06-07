@@ -34,63 +34,83 @@
             llmTextBox = new TextBox();
             label2 = new Label();
             ContinueButton = new Button();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(43, 115);
+            label1.Location = new Point(114, 330);
+            label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(105, 20);
+            label1.Size = new Size(171, 32);
             label1.TabIndex = 0;
             label1.Text = "Enter LLM Key:";
             // 
             // githubTextBox
             // 
-            githubTextBox.Location = new Point(154, 64);
+            githubTextBox.Location = new Point(294, 248);
+            githubTextBox.Margin = new Padding(5);
             githubTextBox.Name = "githubTextBox";
-            githubTextBox.Size = new Size(322, 27);
+            githubTextBox.Size = new Size(521, 39);
             githubTextBox.TabIndex = 1;
             // 
             // llmTextBox
             // 
-            llmTextBox.Location = new Point(154, 112);
+            llmTextBox.Location = new Point(294, 325);
+            llmTextBox.Margin = new Padding(5);
             llmTextBox.Name = "llmTextBox";
-            llmTextBox.Size = new Size(322, 27);
+            llmTextBox.Size = new Size(521, 39);
             llmTextBox.TabIndex = 2;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(23, 67);
+            label2.Location = new Point(81, 253);
+            label2.Margin = new Padding(5, 0, 5, 0);
             label2.Name = "label2";
-            label2.Size = new Size(125, 20);
+            label2.Size = new Size(202, 32);
             label2.TabIndex = 3;
             label2.Text = "Enter GitHub Key:";
             // 
             // ContinueButton
             // 
-            ContinueButton.Location = new Point(128, 204);
+            ContinueButton.Location = new Point(252, 452);
+            ContinueButton.Margin = new Padding(5);
             ContinueButton.Name = "ContinueButton";
-            ContinueButton.Size = new Size(213, 29);
+            ContinueButton.Size = new Size(346, 46);
             ContinueButton.TabIndex = 4;
             ContinueButton.Text = "Continue To A.U.R.A";
             ContinueButton.UseVisualStyleBackColor = true;
             ContinueButton.Click += ContinueButton_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(252, 66);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(406, 101);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
+            // 
             // LoginForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(496, 311);
+            ClientSize = new Size(899, 596);
+            Controls.Add(pictureBox1);
             Controls.Add(ContinueButton);
             Controls.Add(label2);
             Controls.Add(llmTextBox);
             Controls.Add(githubTextBox);
             Controls.Add(label1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(5);
             Name = "LoginForm";
-            Text = "LoginForm";
+            Text = "A.U.R.A";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -102,5 +122,6 @@
         private TextBox llmTextBox;
         private Label label2;
         private Button ContinueButton;
+        private PictureBox pictureBox1;
     }
 }

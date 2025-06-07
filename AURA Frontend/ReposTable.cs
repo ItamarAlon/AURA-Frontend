@@ -23,6 +23,7 @@ namespace AURA_Frontend
 
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.RowTemplate.Height = 30;
+            adjustDataGridViewWidth();
         }
 
         public Repository this[int index]
@@ -33,6 +34,7 @@ namespace AURA_Frontend
         public void AddItem(Repository item)
         {
             repositoryBindingSource.Add(item);
+            adjustDataGridViewWidth();
         }
 
         public void UpdateItemStatus(int index, eStatus newStatus)
@@ -139,6 +141,25 @@ namespace AURA_Frontend
         {
             if (e.KeyChar == (char)Keys.Enter)
                 openSelectedRepoManagerScreen();
+        }
+
+        private void adjustDataGridViewWidth()
+        {
+            int totalWidth = 0;
+
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                totalWidth += column.Width;
+            }
+
+            // Optional: Add scrollbar or margin space
+            if (HasVerticalScrollBar())
+                totalWidth += SystemInformation.VerticalScrollBarWidth + 2;
+            dataGridView1.Width = totalWidth;
+            this.Width = totalWidth;
+
+            //// Make panel grow with the DataGridView
+            //panel1.Width = dataGridView1.Right + 5;
         }
     }
 }
