@@ -34,8 +34,6 @@
             mainScreen = new SelectRepoScreen();
             menuStrip1 = new MenuStrip();
             settingsToolStripMenuItem = new ToolStripMenuItem();
-            llmMenuItem = new ToolStripMenuItem();
-            chatgptMenuItem = new ToolStripMenuItem();
             panel1.SuspendLayout();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -52,17 +50,19 @@
             // 
             // mainScreen
             // 
+            mainScreen.BackColor = Color.FromArgb(30, 31, 34);
             mainScreen.Dock = DockStyle.Fill;
             mainScreen.Location = new Point(0, 0);
-            mainScreen.Margin = new Padding(2, 2, 2, 2);
+            mainScreen.Margin = new Padding(2);
             mainScreen.Name = "mainScreen";
             mainScreen.Size = new Size(1649, 1280);
             mainScreen.TabIndex = 0;
             // 
             // menuStrip1
             // 
+            menuStrip1.BackColor = Color.FromArgb(43, 45, 48);
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { settingsToolStripMenuItem, llmMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { settingsToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(10, 2, 0, 2);
@@ -72,24 +72,10 @@
             // 
             // settingsToolStripMenuItem
             // 
+            settingsToolStripMenuItem.ForeColor = Color.White;
             settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             settingsToolStripMenuItem.Size = new Size(120, 36);
             settingsToolStripMenuItem.Text = "Settings";
-            // 
-            // llmMenuItem
-            // 
-            llmMenuItem.Alignment = ToolStripItemAlignment.Right;
-            llmMenuItem.DropDownItems.AddRange(new ToolStripItem[] { chatgptMenuItem });
-            llmMenuItem.Name = "llmMenuItem";
-            llmMenuItem.Size = new Size(78, 36);
-            llmMenuItem.Text = "LLM";
-            // 
-            // chatgptMenuItem
-            // 
-            chatgptMenuItem.Image = Properties.Resources.ChatGPT_Black_Logo;
-            chatgptMenuItem.Name = "chatgptMenuItem";
-            chatgptMenuItem.Size = new Size(234, 44);
-            chatgptMenuItem.Text = "chatGPT";
             // 
             // MainForm
             // 
@@ -115,7 +101,5 @@
         private SelectRepoScreen mainScreen;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem settingsToolStripMenuItem;
-        private ToolStripMenuItem llmMenuItem;
-        private ToolStripMenuItem chatgptMenuItem;
     }
 }

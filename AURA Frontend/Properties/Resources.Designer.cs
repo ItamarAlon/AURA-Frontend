@@ -63,9 +63,29 @@ namespace AURA_Frontend.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AURA_White {
+            get {
+                object obj = ResourceManager.GetObject("AURA White", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ChatGPT_Black_Logo {
             get {
                 object obj = ResourceManager.GetObject("ChatGPT Black Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ChatGPT_White_Logo {
+            get {
+                object obj = ResourceManager.GetObject("ChatGPT White Logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

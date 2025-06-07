@@ -30,6 +30,7 @@ namespace AURA_Frontend
             bindRepositoryDataToScreen();
             chatbox.MessageSent += chatBox_MessageSent;
             BackendConnector.Instance.RegisterRepoManagerScreen(this);
+            toolStrip1.Renderer = new DarkModeToolStripRenderer();
         }
 
 

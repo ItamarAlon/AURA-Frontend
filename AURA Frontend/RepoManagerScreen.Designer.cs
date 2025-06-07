@@ -57,9 +57,10 @@
             // 
             goBackButton.BackColor = Color.Transparent;
             goBackButton.BackgroundImageLayout = ImageLayout.None;
-            goBackButton.FlatAppearance.BorderColor = SystemColors.Control;
+            goBackButton.FlatAppearance.BorderColor = Color.FromArgb(30, 31, 34);
             goBackButton.FlatStyle = FlatStyle.Flat;
             goBackButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            goBackButton.ForeColor = Color.White;
             goBackButton.Location = new Point(20, 30);
             goBackButton.Name = "goBackButton";
             goBackButton.Size = new Size(197, 82);
@@ -82,6 +83,7 @@
             // statusBar
             // 
             statusBar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            statusBar.ForeColor = Color.White;
             statusBar.Location = new Point(437, 552);
             statusBar.Margin = new Padding(20, 21, 20, 21);
             statusBar.Name = "statusBar";
@@ -95,6 +97,7 @@
             repoNameLabel.AutoSize = true;
             repoNameLabel.DataBindings.Add(new Binding("Text", repositoryBindingSource, "Name", true));
             repoNameLabel.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            repoNameLabel.ForeColor = Color.White;
             repoNameLabel.Location = new Point(46, 163);
             repoNameLabel.Margin = new Padding(6, 0, 6, 0);
             repoNameLabel.Name = "repoNameLabel";
@@ -108,9 +111,10 @@
             // 
             // descriptionTextBox
             // 
-            descriptionTextBox.BackColor = SystemColors.Control;
+            descriptionTextBox.BackColor = Color.FromArgb(30, 31, 34);
             descriptionTextBox.BorderStyle = BorderStyle.None;
             descriptionTextBox.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            descriptionTextBox.ForeColor = Color.White;
             descriptionTextBox.Location = new Point(46, 258);
             descriptionTextBox.Margin = new Padding(6);
             descriptionTextBox.Multiline = true;
@@ -124,6 +128,7 @@
             // 
             lastModifiedLabel.AutoSize = true;
             lastModifiedLabel.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lastModifiedLabel.ForeColor = Color.White;
             lastModifiedLabel.Location = new Point(46, 387);
             lastModifiedLabel.Margin = new Padding(6, 0, 6, 0);
             lastModifiedLabel.Name = "lastModifiedLabel";
@@ -163,6 +168,7 @@
             // 
             // tableLayoutPanel1
             // 
+            tableLayoutPanel1.BackColor = Color.FromArgb(43, 45, 48);
             tableLayoutPanel1.ColumnCount = 3;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 32F));
@@ -184,6 +190,7 @@
             tableSeperatorLabel.AutoSize = true;
             tableSeperatorLabel.Dock = DockStyle.Fill;
             tableSeperatorLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tableSeperatorLabel.ForeColor = Color.White;
             tableSeperatorLabel.Location = new Point(278, 0);
             tableSeperatorLabel.Margin = new Padding(0);
             tableSeperatorLabel.Name = "tableSeperatorLabel";
@@ -197,6 +204,7 @@
             pathLabel.AutoSize = true;
             pathLabel.Dock = DockStyle.Fill;
             pathLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            pathLabel.ForeColor = Color.White;
             pathLabel.Location = new Point(6, 0);
             pathLabel.Margin = new Padding(6, 0, 6, 0);
             pathLabel.Name = "pathLabel";
@@ -210,6 +218,7 @@
             versionLabel.AutoSize = true;
             versionLabel.Dock = DockStyle.Fill;
             versionLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            versionLabel.ForeColor = Color.White;
             versionLabel.Location = new Point(310, 0);
             versionLabel.Margin = new Padding(0);
             versionLabel.Name = "versionLabel";
@@ -221,7 +230,8 @@
             // toolStrip1
             // 
             toolStrip1.AutoSize = false;
-            toolStrip1.BackColor = Color.FromArgb(247, 248, 247);
+            toolStrip1.BackColor = Color.FromArgb(43, 45, 48);
+            toolStrip1.BackgroundImageLayout = ImageLayout.None;
             toolStrip1.Dock = DockStyle.Right;
             toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
             toolStrip1.ImageScalingSize = new Size(20, 20);
@@ -229,6 +239,7 @@
             toolStrip1.Location = new Point(1340, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Padding = new Padding(0, 0, 3, 0);
+            toolStrip1.RenderMode = ToolStripRenderMode.Professional;
             toolStrip1.Size = new Size(58, 1103);
             toolStrip1.TabIndex = 13;
             toolStrip1.Text = "toolStrip1";
@@ -238,7 +249,7 @@
             toggleChatButton.AutoSize = false;
             toggleChatButton.CheckOnClick = true;
             toggleChatButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toggleChatButton.Image = Properties.Resources.ChatGPT_Black_Logo;
+            toggleChatButton.Image = Properties.Resources.ChatGPT_White_Logo;
             toggleChatButton.ImageTransparentColor = Color.Magenta;
             toggleChatButton.Name = "toggleChatButton";
             toggleChatButton.Size = new Size(40, 40);
@@ -262,20 +273,25 @@
             // 
             // button1
             // 
+            button1.BackColor = Color.FromArgb(43, 45, 48);
+            button1.FlatAppearance.BorderColor = Color.FromArgb(78, 81, 87);
+            button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Segoe UI", 15.75F);
+            button1.ForeColor = Color.White;
             button1.Location = new Point(335, 459);
             button1.Margin = new Padding(6);
             button1.Name = "button1";
             button1.Size = new Size(249, 86);
             button1.TabIndex = 12;
             button1.Text = "Options";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             // 
             // RepoManagerScreen
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
+            BackColor = Color.FromArgb(30, 31, 34);
             Controls.Add(chatbox);
             Controls.Add(toolStrip1);
             Controls.Add(panel1);

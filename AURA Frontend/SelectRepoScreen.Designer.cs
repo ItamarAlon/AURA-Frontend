@@ -52,13 +52,17 @@
             // button1
             // 
             button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            button1.BackColor = Color.FromArgb(43, 45, 48);
+            button1.FlatAppearance.BorderColor = Color.FromArgb(78, 81, 87);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = Color.White;
             button1.Location = new Point(87, 608);
             button1.Margin = new Padding(7, 6, 7, 6);
             button1.Name = "button1";
             button1.Size = new Size(214, 49);
             button1.TabIndex = 5;
             button1.Text = "Clone Repository";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // panel1
@@ -82,6 +86,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(30, 31, 34);
             Controls.Add(panel1);
             Margin = new Padding(4);
             Name = "SelectRepoScreen";

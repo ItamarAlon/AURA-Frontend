@@ -48,7 +48,6 @@ namespace AURA_Frontend
 
         private void centerButtonToGrid()
         {
-            // Assume button1 is the button, and dataGridView1 is your grid
             int buttonX = reposTable.Left + (reposTable.Width - button1.Width) / 2;
             button1.Location = new Point(buttonX, button1.Location.Y);
         }

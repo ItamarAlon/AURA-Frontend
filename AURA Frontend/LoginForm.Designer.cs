@@ -41,7 +41,8 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(114, 330);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(114, 325);
             label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
             label1.Size = new Size(171, 32);
@@ -50,6 +51,9 @@
             // 
             // githubTextBox
             // 
+            githubTextBox.BackColor = Color.FromArgb(43, 45, 48);
+            githubTextBox.BorderStyle = BorderStyle.FixedSingle;
+            githubTextBox.ForeColor = Color.White;
             githubTextBox.Location = new Point(294, 248);
             githubTextBox.Margin = new Padding(5);
             githubTextBox.Name = "githubTextBox";
@@ -58,6 +62,9 @@
             // 
             // llmTextBox
             // 
+            llmTextBox.BackColor = Color.FromArgb(43, 45, 48);
+            llmTextBox.BorderStyle = BorderStyle.FixedSingle;
+            llmTextBox.ForeColor = Color.White;
             llmTextBox.Location = new Point(294, 325);
             llmTextBox.Margin = new Padding(5);
             llmTextBox.Name = "llmTextBox";
@@ -67,7 +74,8 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(81, 253);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(83, 250);
             label2.Margin = new Padding(5, 0, 5, 0);
             label2.Name = "label2";
             label2.Size = new Size(202, 32);
@@ -76,18 +84,22 @@
             // 
             // ContinueButton
             // 
+            ContinueButton.BackColor = Color.FromArgb(43, 45, 48);
+            ContinueButton.FlatAppearance.BorderColor = Color.FromArgb(78, 81, 87);
+            ContinueButton.FlatStyle = FlatStyle.Flat;
+            ContinueButton.ForeColor = Color.White;
             ContinueButton.Location = new Point(252, 452);
             ContinueButton.Margin = new Padding(5);
             ContinueButton.Name = "ContinueButton";
             ContinueButton.Size = new Size(346, 46);
             ContinueButton.TabIndex = 4;
             ContinueButton.Text = "Continue To A.U.R.A";
-            ContinueButton.UseVisualStyleBackColor = true;
+            ContinueButton.UseVisualStyleBackColor = false;
             ContinueButton.Click += ContinueButton_Click;
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Image = Properties.Resources.AURA_White;
             pictureBox1.Location = new Point(252, 66);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(406, 101);
@@ -99,6 +111,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(30, 31, 34);
             ClientSize = new Size(899, 596);
             Controls.Add(pictureBox1);
             Controls.Add(ContinueButton);

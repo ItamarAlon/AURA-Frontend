@@ -318,12 +318,12 @@ namespace AURA_Frontend
 
         private void topPanel_Paint(object sender, PaintEventArgs e)
         {
-            drawBorderAroundPanel(e, topPanel, Color.FromArgb(225, 227, 227));
+            //drawBorderAroundPanel(e, topPanel, Color.FromArgb(78, 81, 87));
         }
 
         private void bottomPanel_Paint(object sender, PaintEventArgs e)
         {
-            drawBorderAroundPanel(e, bottomPanel, Color.FromArgb(225, 227, 227));
+            //drawBorderAroundPanel(e, bottomPanel, Color.FromArgb(78, 81, 87));
         }
 
         private void itemsPanel_Paint(object sender, PaintEventArgs e)

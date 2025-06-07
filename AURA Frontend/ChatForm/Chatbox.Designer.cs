@@ -29,13 +29,14 @@ namespace AURA_Frontend
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Chatbox));
             topPanel = new Panel();
             clientnameLabel = new Label();
             bottomPanel = new Panel();
             chatTextbox = new TextBox();
             attachButton = new Button();
             removeButton = new Button();
-            sendButton = new MaterialSkin.Controls.MaterialButton();
+            sendButton = new Button();
             itemsPanel = new Panel();
             topPanel.SuspendLayout();
             bottomPanel.SuspendLayout();
@@ -43,7 +44,7 @@ namespace AURA_Frontend
             // 
             // topPanel
             // 
-            topPanel.BackColor = Color.FromArgb(251, 252, 251);
+            topPanel.BackColor = Color.FromArgb(21, 26, 29);
             topPanel.Controls.Add(clientnameLabel);
             topPanel.Dock = DockStyle.Top;
             topPanel.ForeColor = SystemColors.ButtonHighlight;
@@ -60,7 +61,7 @@ namespace AURA_Frontend
             clientnameLabel.AutoSize = true;
             clientnameLabel.Dock = DockStyle.Bottom;
             clientnameLabel.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold);
-            clientnameLabel.ForeColor = Color.Black;
+            clientnameLabel.ForeColor = Color.White;
             clientnameLabel.Location = new Point(32, 32);
             clientnameLabel.Margin = new Padding(6, 0, 6, 0);
             clientnameLabel.Name = "clientnameLabel";
@@ -70,7 +71,7 @@ namespace AURA_Frontend
             // 
             // bottomPanel
             // 
-            bottomPanel.BackColor = Color.FromArgb(251, 252, 251);
+            bottomPanel.BackColor = Color.FromArgb(21, 26, 29);
             bottomPanel.Controls.Add(chatTextbox);
             bottomPanel.Controls.Add(attachButton);
             bottomPanel.Controls.Add(removeButton);
@@ -87,7 +88,10 @@ namespace AURA_Frontend
             // 
             // chatTextbox
             // 
+            chatTextbox.BackColor = Color.FromArgb(43, 45, 48);
+            chatTextbox.BorderStyle = BorderStyle.None;
             chatTextbox.Dock = DockStyle.Fill;
+            chatTextbox.ForeColor = Color.White;
             chatTextbox.Location = new Point(32, 26);
             chatTextbox.Margin = new Padding(6);
             chatTextbox.Multiline = true;
@@ -98,10 +102,11 @@ namespace AURA_Frontend
             // attachButton
             // 
             attachButton.AutoSize = true;
-            attachButton.BackColor = Color.GhostWhite;
-            attachButton.BackgroundImageLayout = ImageLayout.Center;
+            attachButton.BackColor = Color.FromArgb(43, 45, 48);
+            attachButton.BackgroundImage = (Image)resources.GetObject("attachButton.BackgroundImage");
+            attachButton.BackgroundImageLayout = ImageLayout.Zoom;
             attachButton.Dock = DockStyle.Right;
-            attachButton.FlatStyle = FlatStyle.System;
+            attachButton.FlatStyle = FlatStyle.Flat;
             attachButton.ForeColor = SystemColors.ControlText;
             attachButton.ImageAlign = ContentAlignment.MiddleLeft;
             attachButton.Location = new Point(642, 26);
@@ -119,7 +124,7 @@ namespace AURA_Frontend
             removeButton.BackColor = Color.Red;
             removeButton.Dock = DockStyle.Right;
             removeButton.FlatAppearance.BorderSize = 2;
-            removeButton.FlatStyle = FlatStyle.Flat;
+            removeButton.FlatStyle = FlatStyle.Popup;
             removeButton.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Bold);
             removeButton.ForeColor = SystemColors.ControlLightLight;
             removeButton.Location = new Point(688, 26);
@@ -133,32 +138,24 @@ namespace AURA_Frontend
             // 
             // sendButton
             // 
-            sendButton.AutoSize = false;
             sendButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             sendButton.BackColor = Color.RoyalBlue;
-            sendButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            sendButton.Depth = 0;
             sendButton.Dock = DockStyle.Right;
-            sendButton.FlatStyle = FlatStyle.Flat;
+            sendButton.FlatStyle = FlatStyle.Popup;
             sendButton.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            sendButton.HighEmphasis = true;
-            sendButton.Icon = null;
             sendButton.Location = new Point(722, 26);
             sendButton.Margin = new Padding(6);
-            sendButton.MouseState = MaterialSkin.MouseState.HOVER;
             sendButton.Name = "sendButton";
-            sendButton.NoAccentTextColor = Color.Empty;
             sendButton.Padding = new Padding(16);
             sendButton.Size = new Size(136, 79);
             sendButton.TabIndex = 1;
             sendButton.Text = "Send";
-            sendButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            sendButton.UseAccentColor = false;
             sendButton.UseVisualStyleBackColor = false;
             // 
             // itemsPanel
             // 
             itemsPanel.AutoScroll = true;
+            itemsPanel.BackColor = Color.FromArgb(17, 21, 26);
             itemsPanel.Dock = DockStyle.Fill;
             itemsPanel.Location = new Point(0, 118);
             itemsPanel.Margin = new Padding(6);
@@ -194,6 +191,6 @@ namespace AURA_Frontend
 		private System.Windows.Forms.Button removeButton;
 		private System.Windows.Forms.TextBox chatTextbox;
 		private System.Windows.Forms.Panel itemsPanel;
-        private MaterialSkin.Controls.MaterialButton sendButton;
+        private System.Windows.Forms.Button sendButton;
     }
 }

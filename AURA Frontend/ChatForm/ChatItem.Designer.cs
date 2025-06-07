@@ -70,7 +70,7 @@ namespace AURA_Frontend
             bodyPanel.Location = new Point(22, 13);
             bodyPanel.Margin = new Padding(7, 6, 7, 6);
             bodyPanel.Name = "bodyPanel";
-            bodyPanel.Padding = new Padding(4, 4, 4, 4);
+            bodyPanel.Padding = new Padding(4);
             bodyPanel.Size = new Size(787, 98);
             bodyPanel.TabIndex = 9;
             // 
@@ -94,7 +94,7 @@ namespace AURA_Frontend
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlLightLight;
+            BackColor = Color.FromArgb(17, 21, 26);
             Controls.Add(bodyPanel);
             Controls.Add(authorPanel);
             Margin = new Padding(7, 6, 7, 6);

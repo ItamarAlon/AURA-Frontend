@@ -10,7 +10,6 @@ namespace AURA_Frontend
         {
             InitializeComponent();
             mainScreen.RepoSelected += reposTable_RepoSelected;
-            enableDynamicParentMenuLabel(llmMenuItem);
         }
 
         private void reposTable_RepoSelected(object sender, EventArgs<Repository> e)
