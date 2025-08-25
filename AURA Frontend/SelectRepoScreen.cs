@@ -18,8 +18,13 @@ namespace AURA_Frontend
         public SelectRepoScreen()
         {
             InitializeComponent();
-            reposTable.RepoSelected += (o, e) => this.RepoSelected?.Invoke(o, e);
+            reposTable.RepoSelected += reposTable_RepoSelected;
             BackendConnector.Instance.RegisterRepoSelectScreen(this);
+        }
+
+        private void reposTable_RepoSelected(object? sender, EventArgs<Repository> e)
+        {
+            OnRepoSelected(e);
         }
 
         protected virtual void OnRepoSelected(EventArgs<Repository> e)

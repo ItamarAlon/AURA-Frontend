@@ -9,10 +9,10 @@ namespace AURA_Frontend
         public MainForm()
         {
             InitializeComponent();
-            mainScreen.RepoSelected += reposTable_RepoSelected;
+            mainScreen.RepoSelected += mainScreen_RepoSelected;
         }
 
-        private void reposTable_RepoSelected(object sender, EventArgs<Repository> e)
+        private void mainScreen_RepoSelected(object sender, EventArgs<Repository> e)
         {
             Repository chosenRepo = e.Value;
             switchToRepoScreen(chosenRepo);

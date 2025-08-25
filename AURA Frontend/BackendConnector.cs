@@ -40,7 +40,6 @@ namespace AURA_Frontend
             askUserForRepositoryToClone();
         }
 
-
         private void repoManagerScreen_StartRunningRequested(object? sender, EventArgs<Repository> e)
         {
             startAURA((Repository)e);
