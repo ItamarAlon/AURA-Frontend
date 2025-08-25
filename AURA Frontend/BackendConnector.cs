@@ -30,14 +30,25 @@ namespace AURA_Frontend
             screen.ChatMessageSent += repoManagerScreen_ChatMessageSent;
         }
 
+        public void RegisterRepoSelectScreen(SelectRepoScreen screen)
+        {
+            screen.CloneRepositoryRequested += selectRepoScreen_CloneRepositoryRequested;
+        }
+
+        private void selectRepoScreen_CloneRepositoryRequested(object? sender, EventArgs e)
+        {
+            askUserForRepositoryToClone();
+        }
+
+
         private void repoManagerScreen_StartRunningRequested(object? sender, EventArgs<Repository> e)
         {
-            startAURA(e.Value);
+            startAURA((Repository)e);
         }
 
         private void repoManagerScreen_ChatMessageSent(object? sender, EventArgs<string> e)
         {
-            sendRequestToLLM(e.Value);
+            sendRequestToLLM((string)e);
         }
 
         private void sendRequestToLLM(string message)
@@ -48,6 +59,11 @@ namespace AURA_Frontend
         private void startAURA(Repository repository)
         {
             //todo: tell backend to start aura.
+        }
+
+        private void askUserForRepositoryToClone()
+        {
+            //todo: go to backend to ask user for repository.
         }
     }
 }

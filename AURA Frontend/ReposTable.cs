@@ -105,7 +105,7 @@ namespace AURA_Frontend
 
         private void NotifyThatRepoWasSelected(Repository clickedOnRepo)
         {
-            OnRepoSelected(new EventArgs<Repository>(clickedOnRepo));
+            OnRepoSelected(clickedOnRepo);
         }
 
         protected virtual void OnRepoSelected(EventArgs<Repository> e)

@@ -13,28 +13,44 @@ namespace AURA_Frontend
     public partial class SelectRepoScreen : UserControl
     {
         public event EventHandler<EventArgs<Repository>> RepoSelected;
+        public event EventHandler CloneRepositoryRequested;
 
         public SelectRepoScreen()
         {
             InitializeComponent();
             reposTable.RepoSelected += (o, e) => this.RepoSelected?.Invoke(o, e);
+            BackendConnector.Instance.RegisterRepoSelectScreen(this);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        protected virtual void OnRepoSelected(EventArgs<Repository> e)
+        {
+            RepoSelected?.Invoke(this, e);
+        }
+
+        private void cloneRepositoryButton_Click(object sender, EventArgs e)
+        {
+            addReposToTable(); //For Testing
+            OnCloneRepositoryRequested(new EventArgs());
+            centerButtonToGrid();
+        }
+
+        private void addReposToTable()
         {
             reposTable.AddItem(new Repository
             {
                 Name = "Pong Game 2",
                 Status = RepoStatus.eStatus.Done,
-                Description =
-                "The better version of Pong",
+                Description = "The better version of Pong",
                 Version = "1.3"
             });
             reposTable.AddItem(new Repository { Name = "Grand Theft Auto VII", Status = RepoStatus.eStatus.Running });
             reposTable.AddItem(new Repository { Name = "Concord", Status = RepoStatus.eStatus.Error });
             reposTable.AddItem(new Repository { Name = "Very Awesome Project", Status = RepoStatus.eStatus.Done });
+        }
 
-            centerButtonToGrid();
+        protected virtual void OnCloneRepositoryRequested(EventArgs e)
+        {
+            CloneRepositoryRequested?.Invoke(this, e);
         }
 
         private void centerPanel()
@@ -48,8 +64,8 @@ namespace AURA_Frontend
 
         private void centerButtonToGrid()
         {
-            int buttonX = reposTable.Left + (reposTable.Width - button1.Width) / 2;
-            button1.Location = new Point(buttonX, button1.Location.Y);
+            int buttonX = reposTable.Left + (reposTable.Width - cloneRepositoryButton.Width) / 2;
+            cloneRepositoryButton.Location = new Point(buttonX, cloneRepositoryButton.Location.Y);
         }
 
         protected override void OnLoad(EventArgs e)
@@ -63,5 +79,6 @@ namespace AURA_Frontend
             base.OnResize(e);
             centerPanel();
         }
+
     }
 }

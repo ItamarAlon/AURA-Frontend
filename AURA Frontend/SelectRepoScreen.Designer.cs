@@ -31,7 +31,7 @@
             components = new System.ComponentModel.Container();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             reposTable = new ReposTable();
-            button1 = new Button();
+            cloneRepositoryButton = new Button();
             panel1 = new Panel();
             repositoryBindingSource = new BindingSource(components);
             panel1.SuspendLayout();
@@ -49,21 +49,21 @@
             reposTable.Size = new Size(286, 431);
             reposTable.TabIndex = 4;
             // 
-            // button1
+            // cloneRepositoryButton
             // 
-            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            button1.BackColor = Color.FromArgb(43, 45, 48);
-            button1.FlatAppearance.BorderColor = Color.FromArgb(78, 81, 87);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(87, 608);
-            button1.Margin = new Padding(7, 6, 7, 6);
-            button1.Name = "button1";
-            button1.Size = new Size(214, 49);
-            button1.TabIndex = 5;
-            button1.Text = "Clone Repository";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            cloneRepositoryButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            cloneRepositoryButton.BackColor = Color.FromArgb(43, 45, 48);
+            cloneRepositoryButton.FlatAppearance.BorderColor = Color.FromArgb(78, 81, 87);
+            cloneRepositoryButton.FlatStyle = FlatStyle.Flat;
+            cloneRepositoryButton.ForeColor = Color.White;
+            cloneRepositoryButton.Location = new Point(87, 608);
+            cloneRepositoryButton.Margin = new Padding(7, 6, 7, 6);
+            cloneRepositoryButton.Name = "cloneRepositoryButton";
+            cloneRepositoryButton.Size = new Size(214, 49);
+            cloneRepositoryButton.TabIndex = 5;
+            cloneRepositoryButton.Text = "Clone Repository";
+            cloneRepositoryButton.UseVisualStyleBackColor = false;
+            cloneRepositoryButton.Click += cloneRepositoryButton_Click;
             // 
             // panel1
             // 
@@ -71,7 +71,7 @@
             panel1.AutoSize = true;
             panel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panel1.Controls.Add(reposTable);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(cloneRepositoryButton);
             panel1.Location = new Point(479, 111);
             panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
@@ -101,7 +101,7 @@
         #endregion
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private ReposTable reposTable;
-        private Button button1;
+        private Button cloneRepositoryButton;
         private Panel panel1;
         private BindingSource repositoryBindingSource;
     }
