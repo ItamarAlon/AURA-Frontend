@@ -70,9 +70,8 @@ namespace AURA_Frontend
                 var existing = dataGridView1.Controls
                     .OfType<DotIndicator>()
                     .FirstOrDefault(c => c.Tag as Point? == new Point(e.RowIndex, e.ColumnIndex));
-                if (existing != null && existing is DotIndicator indicator)
+                if (existing != null && existing is DotIndicator indicator && indicator.DotColor == color)
                 {
-                    //indicator.DotColor = color;
                     return;
                 }
 
@@ -84,6 +83,7 @@ namespace AURA_Frontend
                     Tag = new Point(e.RowIndex, e.ColumnIndex) // Prevent duplication
                 };
 
+                dataGridView1.Controls.Remove(existing);
                 dataGridView1.Controls.Add(dot);
             }
         }
