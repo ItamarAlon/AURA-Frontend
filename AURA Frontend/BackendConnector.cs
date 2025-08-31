@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 
 using static AURA_Frontend.ApiConstants;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace AURA_Frontend
 {
@@ -47,8 +49,13 @@ namespace AURA_Frontend
         private void onErrorOccurred(string message) => ErrorOccurred?.Invoke(message);
 
         // ─────────── JSON options ───────────
-        private static readonly JsonSerializerOptions s_Json =
-            new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+        private static readonly JsonSerializerOptions sr_JsonSerializerOptions = new(JsonSerializerDefaults.Web)
+        {
+            PropertyNameCaseInsensitive = true,
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
+        private static string Serialize<T>(T payload) =>
+            JsonSerializer.Serialize(payload, sr_JsonSerializerOptions);
 
         // ─────────── Tiny helpers that wrap HttpClientUtil callbacks as Task<T> ───────────
         private Task<T> sendAsyncGet<T>(string url, CancellationToken ct = default)
@@ -62,7 +69,7 @@ namespace AURA_Frontend
                     try
                     {
                         string text = res.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                        var dto = JsonSerializer.Deserialize<T>(text, s_Json);
+                        var dto = JsonSerializer.Deserialize<T>(text, sr_JsonSerializerOptions);
                         tcs.TrySetResult(dto!);
                     }
                     catch (Exception ex) { tcs.TrySetException(ex); }
@@ -83,7 +90,7 @@ namespace AURA_Frontend
                     try
                     {
                         string text = res.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                        var dto = JsonSerializer.Deserialize<T>(text, s_Json);
+                        var dto = JsonSerializer.Deserialize<T>(text, sr_JsonSerializerOptions);
                         tcs.TrySetResult(dto!);
                     }
                     catch (Exception ex) { tcs.TrySetException(ex); }
@@ -92,6 +99,10 @@ namespace AURA_Frontend
                 i_ct: ct
             );
             return tcs.Task;
+        }
+        private Task<T> sendAsyncJson<T>(string url, HttpRequestType method, object json, CancellationToken ct = default)
+        {
+            return sendAsyncJson<T>(url, method, Serialize(json), ct);
         }
 
         private enum KeyType { GitHub, LLM}
@@ -127,7 +138,7 @@ namespace AURA_Frontend
         {
             try
             {
-                var body = $"{{\"token\":\"{key}\"}}";
+                var body = new { token = key };
                 var dto = await sendAsyncJson<ValidateTokenResponseDto>(Key.k_ValidateGithubKey, HttpRequestType.POST, body, ct);
                 onLogReceived($"GitHub key verification: {(dto?.Valid == true ? "valid" : "invalid")}");
                 return dto?.Valid == true;
@@ -144,7 +155,7 @@ namespace AURA_Frontend
             try
             {
                 onLogReceived($"Starting AURA for repo '{repository?.Name}'...");
-                var body = $"{{\"repo\":\"{repository?.Name}\"}}";
+                var body = new { repo = repository?.Name };
                 _ = await sendAsyncJson<object>(Aura.k_Start, HttpRequestType.POST, body, ct);
                 onLogReceived("AURA started.");
             }
@@ -160,8 +171,8 @@ namespace AURA_Frontend
             try
             {
                 onLogReceived($"Cloning repository from {repoUrl}...");
-                var startBody = $"{{\"url\":\"{repoUrl}\"}}";
-                _ = await sendAsyncJson<object>(Repos.k_Clone, HttpRequestType.POST, startBody, ct);
+                var body = new { url = repoUrl };
+                _ = await sendAsyncJson<object>(Repos.k_Clone, HttpRequestType.POST, body, ct);
 
                 // Optional: poll progress or simulate until you wire real progress
                 for (int p = 0; p <= 100; p += 10)
@@ -200,7 +211,7 @@ namespace AURA_Frontend
             {
                 // If/when your backend streams, raise ChatChunkReceived as chunks arrive.
                 // For now, call the endpoint and return the final message (replace with your API).
-                string body = $"{{\"message\":\"{message.Replace("\"", "\\\"")}\"}}";
+                var body = new { message = message.Replace("\"", "\\\"")}; 
                 string reply = await sendAsyncJson<string>(Chat.k_Send, HttpRequestType.POST, body, ct);
 
                 // Optionally stream fake chunks for current UI
