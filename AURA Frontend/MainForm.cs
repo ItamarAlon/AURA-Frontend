@@ -9,6 +9,7 @@ namespace AURA_Frontend
         public MainForm()
         {
             InitializeComponent();
+            HttpClientUtil.InitializeInstance();
             mainScreen.RepoSelected += mainScreen_RepoSelected;
         }
 
