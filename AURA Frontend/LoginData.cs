@@ -8,6 +8,9 @@ namespace AURA_Frontend
 {
     public sealed class LoginData
     {
+        public event EventHandler<EventArgs<string>> CheckGitHubKeyRequested;
+        public event EventHandler<EventArgs<string>> CheckLLMKeyRequested;
+
         private static LoginData s_Instance;
         private static readonly object key = new object();
 
@@ -44,6 +47,16 @@ namespace AURA_Frontend
 
             //todo: check validility
             return true;
+        }
+
+        private void OnCheckGitHubKeyRequested(EventArgs<string> e)
+        {
+            CheckGitHubKeyRequested?.Invoke(this, e);
+        }
+
+        private void OnCheckLLMKeyRequested(EventArgs<string> e)
+        {
+            CheckLLMKeyRequested?.Invoke(this, e);
         }
     }
 }

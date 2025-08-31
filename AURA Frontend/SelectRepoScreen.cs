@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,31 +11,82 @@ namespace AURA_Frontend
         public event EventHandler<EventArgs<Repository>> RepoSelected;
         public event EventHandler CloneRepositoryRequested;
 
+        private CancellationTokenSource m_Cts;
+
         public SelectRepoScreen()
         {
             InitializeComponent();
             reposTable.RepoSelected += reposTable_RepoSelected;
-            BackendConnector.Instance.RegisterRepoSelectScreen(this);
+
+            // Optional: show progress/errors from connector
+            BackendConnector.Instance.CloneProgressChanged += backend_CloneProgressChanged;
+            BackendConnector.Instance.CloneCompleted += backend_CloneCompleted;
+            BackendConnector.Instance.ErrorOccurred += backend_ErrorOccurred;
         }
 
-        private void reposTable_RepoSelected(object? sender, EventArgs<Repository> e)
+        private void reposTable_RepoSelected(object? sender, EventArgs<Repository> e) => OnRepoSelected(e);
+        protected virtual void OnRepoSelected(EventArgs<Repository> e) => RepoSelected?.Invoke(this, e);
+        protected virtual void OnCloneRepositoryRequested() => CloneRepositoryRequested?.Invoke(this, EventArgs.Empty);
+
+        private async void cloneRepositoryButton_Click(object sender, EventArgs e)
         {
-            OnRepoSelected(e);
+            OnCloneRepositoryRequested();
+            addReposToScreen(); //for testing
+            //await cloneRepository();
         }
 
-        protected virtual void OnRepoSelected(EventArgs<Repository> e)
+        private async Task cloneRepository()
         {
-            RepoSelected?.Invoke(this, e);
+            try
+            {
+                cloneRepositoryButton.Enabled = false;
+                cancelPreviousRequests();
+
+                // TODO: get URL from a textbox or dialog
+                string repoUrl = "https://example.com/repo.git";
+
+                Repository repo = await BackendConnector.Instance.CloneRepositoryAsync(repoUrl, m_Cts.Token);
+                if (repo != null)
+                    reposTable.AddItem(repo);
+
+                centerButtonToGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, $"Clone failed:\n{ex.Message}", "Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                cloneRepositoryButton.Enabled = true;
+            }
         }
 
-        private void cloneRepositoryButton_Click(object sender, EventArgs e)
+        private void cancelPreviousRequests()
         {
-            addReposToTable(); //For Testing
-            OnCloneRepositoryRequested(new EventArgs());
-            centerButtonToGrid();
+            m_Cts?.Cancel();
+            m_Cts = new CancellationTokenSource();
         }
 
-        private void addReposToTable()
+        private void backend_CloneProgressChanged(int percent)
+        {
+            // If you have a ProgressBar on the screen, update it here
+            // progressBar1.Value = percent;
+        }
+
+        private void backend_CloneCompleted(Repository repo)
+        {
+            // Optional toast/status
+            // statusLabel.Text = $"Clone completed: {repo?.Name}";
+        }
+
+        private void backend_ErrorOccurred(string message)
+        {
+            // Optional central error surface
+        }
+
+        //Testing Only
+        private void addReposToScreen()
         {
             reposTable.AddItem(new Repository
             {
@@ -53,16 +100,9 @@ namespace AURA_Frontend
             reposTable.AddItem(new Repository { Name = "Very Awesome Project", Status = RepoStatus.eStatus.Done });
         }
 
-        protected virtual void OnCloneRepositoryRequested(EventArgs e)
-        {
-            CloneRepositoryRequested?.Invoke(this, e);
-        }
-
         private void centerPanel()
         {
-            int x = (this.ClientSize.Width - panel1.Width) / 2;
-            //int x = panel1.Location.X;
-            //int y = (this.ClientSize.Height - panel1.Height) / 2;
+            int x = (ClientSize.Width - panel1.Width) / 2;
             int y = panel1.Location.Y;
             panel1.Location = new Point(x, y);
         }
@@ -73,17 +113,7 @@ namespace AURA_Frontend
             cloneRepositoryButton.Location = new Point(buttonX, cloneRepositoryButton.Location.Y);
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            centerPanel();
-        }
-
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-            centerPanel();
-        }
-
+        protected override void OnLoad(EventArgs e) { base.OnLoad(e); centerPanel(); }
+        protected override void OnResize(EventArgs e) { base.OnResize(e); centerPanel(); }
     }
 }
