@@ -131,7 +131,5 @@ namespace AURA_Frontend
         {
             ChatMessageSent?.Invoke(this, e);
         }
-
-        ~RepoManagerScreen() { /* optional cleanup */ }
     }
 }

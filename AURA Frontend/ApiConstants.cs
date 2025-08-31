@@ -3,9 +3,15 @@
     // This class is ONLY for constants like relative URIs, header names, etc.
     internal static class ApiConstants
     {
-        internal static class Auth
+        internal static class Http
         {
-            public const string k_ValidateGithubKey = "auth/github/validate";
+            public const string k_BaseAddress = "http://localhost:5000/";
+        }
+        internal static class Key
+        {
+            public const string k_ValidateGithubKey = "key/github/validate";
+            public const string k_GetGithubKey = "key/github/get";
+            public const string k_GetLLMKey = "key/llm/get";
         }
 
         internal static class Aura

@@ -16,6 +16,7 @@
 //       },
 //       activateOnError: () => HttpClientUtil.Instance.RunOnUi(() => lblStatus.Text = "✗ Request failed"));
 
+using AURA_Frontend;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -33,7 +34,7 @@ public sealed class HttpClientUtil : IDisposable
     public static class Options
     {
         // Strings can be const; complex types use static readonly
-        public const string BaseAddress = "http://localhost:5000/"; // Edit me
+        public const string BaseAddress = ApiConstants.Http.k_BaseAddress;
         public static readonly TimeSpan Timeout = TimeSpan.FromSeconds(12); // Edit me
         public const bool AllowInsecureDevCertificates = false;            // DEV only
         public const string? BearerToken = null;                            // Optional

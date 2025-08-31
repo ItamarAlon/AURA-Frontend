@@ -94,6 +94,14 @@ namespace AURA_Frontend
             return tcs.Task;
         }
 
+        private enum KeyType { GitHub, LLM}
+        private string convertKeyTypeToUri(KeyType keyType) => keyType switch
+        {
+            KeyType.GitHub => Key.k_GetGithubKey,
+            KeyType.LLM => Key.k_GetLLMKey,
+            _ => throw new NotImplementedException()
+        };
+
         // ─────────── DTOs from backend (adjust to your API) ───────────
         private interface IDto { }
         private sealed class ValidateTokenResponseDto : IDto
@@ -108,16 +116,19 @@ namespace AURA_Frontend
             public string? Description { get; set; }
             public string? Version { get; set; }
         }
+        private sealed class KeyDto : IDto
+        {
+            public string? Key { get; set; }
+        }
 
         // ─────────── Public API (Queries/Commands) ───────────
 
-        // Example: “wait for a bool”
         public async Task<bool> VerifyGithubKeyAsync(string key, CancellationToken ct = default)
         {
             try
             {
                 var body = $"{{\"token\":\"{key}\"}}";
-                var dto = await sendAsyncJson<ValidateTokenResponseDto>(Auth.k_ValidateGithubKey, HttpRequestType.POST, body, ct);
+                var dto = await sendAsyncJson<ValidateTokenResponseDto>(Key.k_ValidateGithubKey, HttpRequestType.POST, body, ct);
                 onLogReceived($"GitHub key verification: {(dto?.Valid == true ? "valid" : "invalid")}");
                 return dto?.Valid == true;
             }
@@ -205,6 +216,32 @@ namespace AURA_Frontend
             catch (Exception ex)
             {
                 onErrorOccurred($"SendChat failed: {ex.Message}");
+                throw;
+            }
+        }
+
+        public async Task<string> GetGitHubKey(CancellationToken ct = default)
+        {
+            return await getKey(KeyType.GitHub, ct);
+        }
+
+        public async Task<string> GetLLMKey(CancellationToken ct = default)
+        {
+            return await getKey(KeyType.LLM, ct);
+        }
+
+        private async Task<string> getKey(KeyType keyType, CancellationToken ct)
+        {
+            string uri = convertKeyTypeToUri(keyType);
+
+            try
+            {
+                KeyDto keyDto = await sendAsyncGet<KeyDto>(uri, ct);
+                return keyDto.Key ?? string.Empty;
+            }
+            catch (Exception ex)
+            {
+                onErrorOccurred($"Key Request Failed: {ex.Message}");
                 throw;
             }
         }
