@@ -48,7 +48,7 @@ public sealed class HttpClientUtil : IDisposable
         get
         {
             if (s_Instance == null)
-                throw new Exception("HttpClientUtil is not initialized yet. Recommended initializing on UI Thread");
+                s_Instance = new HttpClientUtil();
 
             return s_Instance;
         }
@@ -56,7 +56,7 @@ public sealed class HttpClientUtil : IDisposable
 
     private readonly HttpClient m_Http;
     private readonly CancellationTokenSource m_Cts = new CancellationTokenSource();
-    private readonly SynchronizationContext? m_UiCtx; // captured at construction
+    private SynchronizationContext? m_UiCtx; // captured at construction
     private bool m_Disposed;
 
     // --- ctor activates setup based on Options ---
@@ -93,10 +93,6 @@ public sealed class HttpClientUtil : IDisposable
         }
     }
 
-    public static void InitializeInstance()
-    {
-        s_Instance = new HttpClientUtil();
-    }
     // --- finalizer shuts things down if you forgot Dispose() ---
     ~HttpClientUtil() { Dispose(false); }
 
@@ -124,6 +120,15 @@ public sealed class HttpClientUtil : IDisposable
         var ctx = m_UiCtx ?? SynchronizationContext.Current;
         if (ctx is null) { i_action(); return; }
         ctx.Post(_ => i_action(), null);
+    }
+
+    // If you first used the singleton before any UI existed, call this once later on the UI thread
+    // (e.g., in your MainForm constructor) to capture the UI SynchronizationContext.
+    public void CaptureUiContextFromCurrentThread()
+    {
+        var ctx = SynchronizationContext.Current;
+        if (ctx != null) 
+            m_UiCtx = ctx;
     }
 
     // ───────────── Java-style overloads (INSTANCE methods) ─────────────

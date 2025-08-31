@@ -12,13 +12,20 @@ namespace AURA_Frontend
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            using (LoginForm login = new LoginForm())
-            {
-                if (login.ShowDialog() == DialogResult.OK)
+            //bool areAllKeysSet = Task.Run(async () => await LoginData.Instance.CheckIfAllKeysAreSet()).GetAwaiter().GetResult();
+            bool areAllKeysSet = true;
+
+            if (areAllKeysSet)
+                Application.Run(new MainForm());
+            else
+                using (LoginForm login = new LoginForm())
                 {
-                    Application.Run(new MainForm());
+                    if (login.ShowDialog() == DialogResult.OK)
+                    {
+                        Application.Run(new MainForm());
+                    }
                 }
-            }
+
             //Application.Run(new Tests());
         }
     }

@@ -13,11 +13,15 @@ namespace AURA_Frontend
 
         private static LoginData s_Instance;
         private static readonly object key = new object();
+        private CancellationTokenSource m_Cts;
 
         public string GitHubKey { get; set; }
         public string LLMKey { get; set; }
 
-        private LoginData(){}
+        private LoginData()
+        {
+            HttpClientUtil.Instance.CaptureUiContextFromCurrentThread();
+        }
         public static LoginData Instance
         {
             get
@@ -49,6 +53,28 @@ namespace AURA_Frontend
             return true;
         }
 
+        public async Task<bool> CheckIfAllKeysAreSet()
+        {
+            cancelPreviousRequests();
+            try
+            {
+                string githubKey = await BackendConnector.Instance.GetGitHubKey(m_Cts.Token);
+                string llmKey = await BackendConnector.Instance.GetLLMKey(m_Cts.Token);
+
+                if (!string.IsNullOrEmpty(githubKey))
+                    GitHubKey = githubKey;
+                if (!string.IsNullOrEmpty(llmKey))
+                    LLMKey = llmKey;
+
+                return !string.IsNullOrEmpty(githubKey) && !string.IsNullOrEmpty(llmKey);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Something went wrong! {ex.Message}");
+                return false;
+            }
+        }
+
         private void OnCheckGitHubKeyRequested(EventArgs<string> e)
         {
             CheckGitHubKeyRequested?.Invoke(this, e);
@@ -57,6 +83,12 @@ namespace AURA_Frontend
         private void OnCheckLLMKeyRequested(EventArgs<string> e)
         {
             CheckLLMKeyRequested?.Invoke(this, e);
+        }
+
+        private void cancelPreviousRequests()
+        {
+            m_Cts?.Cancel();
+            m_Cts = new CancellationTokenSource();
         }
     }
 }
