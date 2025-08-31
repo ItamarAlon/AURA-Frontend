@@ -15,6 +15,13 @@ namespace AURA_Frontend
         public LoginForm()
         {
             InitializeComponent();
+            writeKeysToTextBoxesIfExist();
+        }
+
+        private void writeKeysToTextBoxesIfExist()
+        {
+            githubTextBox.Text = LoginData.Instance.GitHubKey ?? string.Empty;
+            llmTextBox.Text = LoginData.Instance.LLMKey ?? string.Empty;
         }
 
         private void ContinueButton_Click(object sender, EventArgs e)

@@ -13,7 +13,7 @@ namespace AURA_Frontend
             ApplicationConfiguration.Initialize();
 
             //bool areAllKeysSet = Task.Run(async () => await LoginData.Instance.CheckIfAllKeysAreSet()).GetAwaiter().GetResult();
-            bool areAllKeysSet = true;
+            bool areAllKeysSet = false;
 
             if (areAllKeysSet)
                 Application.Run(new MainForm());
