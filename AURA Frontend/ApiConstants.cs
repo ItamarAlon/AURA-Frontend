@@ -9,7 +9,7 @@
         }
         internal static class Key
         {
-            public const string k_ValidateGithubKey = "key/github/validate";
+            public const string k_ValidateKeys = "key/validate";
             public const string k_GetGithubKey = "key/github/get";
             public const string k_GetLLMKey = "key/llm/get";
         }

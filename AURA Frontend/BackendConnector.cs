@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.Eventing.Reader;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading;
@@ -79,7 +80,6 @@ namespace AURA_Frontend
             );
             return tcs.Task;
         }
-
         private Task<T> sendAsyncJson<T>(string url, HttpRequestType method, string jsonBody, CancellationToken ct = default)
         {
             var tcs = new TaskCompletionSource<T>();
@@ -117,7 +117,8 @@ namespace AURA_Frontend
         private interface IDto { }
         private sealed class ValidateTokenResponseDto : IDto
         {
-            public bool Valid { get; set; }
+            public bool GitHubValid { get; set; }
+            public bool LLMValid { get; set; }
             public string? Login { get; set; }
             public string? Error { get; set; }
         }
@@ -134,14 +135,20 @@ namespace AURA_Frontend
 
         // ─────────── Public API (Queries/Commands) ───────────
 
-        public async Task<bool> VerifyGithubKeyAsync(string key, CancellationToken ct = default)
+        public async Task<bool> VerifyKeysAsync(string githubKey, string llmKey, CancellationToken ct = default)
         {
             try
             {
-                var body = new { token = key };
-                var dto = await sendAsyncJson<ValidateTokenResponseDto>(Key.k_ValidateGithubKey, HttpRequestType.POST, body, ct);
-                onLogReceived($"GitHub key verification: {(dto?.Valid == true ? "valid" : "invalid")}");
-                return dto?.Valid == true;
+                var body = new { github = githubKey, llm = llmKey };
+                var dto = await sendAsyncJson<ValidateTokenResponseDto>(Key.k_ValidateKeys, HttpRequestType.POST, body, ct);
+                onLogReceived($"GitHub key verification: {(dto?.GitHubValid == true ? "valid" : "invalid")}");
+
+                if (llmKey == "_")
+                    return dto?.GitHubValid == true;
+                else if (githubKey == "_")
+                    return dto?.LLMValid == true;
+                else
+                    return dto?.GitHubValid == true && dto?.LLMValid == true;
             }
             catch (Exception ex)
             {
@@ -149,6 +156,17 @@ namespace AURA_Frontend
                 return false;
             }
         }
+
+        public async Task<bool> VerifyGithubKeyAsync(string githubKey, CancellationToken ct = default)
+        {
+            return await VerifyKeysAsync(githubKey, "_", ct);
+        }
+
+        public async Task<bool> VerifyLLMKeyAsync(string llmKey, CancellationToken ct = default)
+        {
+            return await VerifyKeysAsync("_", llmKey, ct);
+        }
+
 
         public async Task StartAuraAsync(Repository repository, CancellationToken ct = default)
         {
